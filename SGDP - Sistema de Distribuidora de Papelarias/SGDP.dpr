@@ -2,7 +2,8 @@ program SGDP;
 
 uses
   Vcl.Forms,
-  uPrincipal in 'view\uPrincipal.pas' {frmPrincipal};
+  uPrincipal in 'view\uPrincipal.pas' {frmPrincipal},
+  uRotinasGenericas in 'controller\uRotinasGenericas.pas';
 
 {$R *.res}
 
