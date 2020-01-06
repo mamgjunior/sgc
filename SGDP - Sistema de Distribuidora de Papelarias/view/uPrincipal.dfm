@@ -19,9 +19,9 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 16
   object imgFundo: TImage
     Left = 0
-    Top = 75
+    Top = 42
     Width = 765
-    Height = 358
+    Height = 391
     Align = alClient
     Center = True
     Picture.Data = {
@@ -2464,12 +2464,14 @@ object frmPrincipal: TfrmPrincipal
       6FFE4164A33C09A3FCFAA7FFD9}
     Stretch = True
     ExplicitTop = 81
+    ExplicitHeight = 358
   end
   object clbFerramentas: TCoolBar
     Left = 0
     Top = 0
     Width = 765
-    Height = 75
+    Height = 42
+    AutoSize = True
     Bands = <
       item
         Control = tlbFerramentas
