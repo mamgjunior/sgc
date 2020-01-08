@@ -10,6 +10,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Height = -13
   Font.Name = 'Arial'
   Font.Style = []
+  FormStyle = fsMDIForm
   KeyPreview = True
   Menu = mnuPrincipal
   OldCreateOrder = False

@@ -4,7 +4,8 @@ uses
   Vcl.Forms,
   uPrincipal in 'view\uPrincipal.pas' {frmPrincipal},
   uRotinasGenericas in 'controller\uRotinasGenericas.pas',
-  uDMModulo1 in 'dao\uDMModulo1.pas' {dmModuloDados1: TDataModule};
+  uDMModulo1 in 'dao\uDMModulo1.pas' {dmModuloDados1: TDataModule},
+  uMestreCadastro in 'view\uMestreCadastro.pas' {frmMestreCadastro};
 
 {$R *.res}
 
