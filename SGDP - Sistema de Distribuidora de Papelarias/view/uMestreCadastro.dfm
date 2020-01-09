@@ -15,6 +15,9 @@ object frmMestreCadastro: TfrmMestreCadastro
   KeyPreview = True
   OldCreateOrder = False
   Visible = True
+  OnClose = FormClose
+  OnKeyPress = FormKeyPress
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object stbMensagens: TStatusBar
@@ -23,9 +26,6 @@ object frmMestreCadastro: TfrmMestreCadastro
     Width = 694
     Height = 19
     Panels = <>
-    ExplicitLeft = 264
-    ExplicitTop = 128
-    ExplicitWidth = 0
   end
   object clbCadastro: TCoolBar
     Left = 0
@@ -40,7 +40,6 @@ object frmMestreCadastro: TfrmMestreCadastro
         MinHeight = 39
         Width = 688
       end>
-    ExplicitWidth = 515
     object tlbCadastro: TToolBar
       Left = 11
       Top = 0
@@ -59,12 +58,14 @@ object frmMestreCadastro: TfrmMestreCadastro
         Top = 0
         Caption = 'Adicionar'
         ImageIndex = 0
+        OnClick = btnAdicionarClick
       end
       object btnPrimeiro: TToolButton
         Left = 39
         Top = 0
         Caption = 'Primeiro'
         ImageIndex = 1
+        OnClick = btnPrimeiroClick
       end
       object btnAnterior: TToolButton
         Left = 78
@@ -83,12 +84,14 @@ object frmMestreCadastro: TfrmMestreCadastro
         Top = 0
         Caption = #218'ltimo'
         ImageIndex = 4
+        OnClick = btnUltimoClick
       end
       object btnLocalizar: TToolButton
         Left = 195
         Top = 0
         Caption = 'Localizar'
         ImageIndex = 5
+        OnClick = btnLocalizarClick
       end
       object btnEditar: TToolButton
         Left = 234
@@ -101,24 +104,28 @@ object frmMestreCadastro: TfrmMestreCadastro
         Top = 0
         Caption = 'Desfazer'
         ImageIndex = 7
+        OnClick = btnDesfazerClick
       end
       object btnGravar: TToolButton
         Left = 312
         Top = 0
         Caption = 'Gravar'
         ImageIndex = 8
+        OnClick = btnGravarClick
       end
       object btnExcluir: TToolButton
         Left = 351
         Top = 0
         Caption = 'Excluir'
         ImageIndex = 9
+        OnClick = btnExcluirClick
       end
       object btnSair: TToolButton
         Left = 390
         Top = 0
         Caption = 'Sair'
         ImageIndex = 10
+        OnClick = btnSairClick
       end
     end
   end
@@ -131,8 +138,6 @@ object frmMestreCadastro: TfrmMestreCadastro
     TabOrder = 2
     object TabSheet1: TTabSheet
       Caption = 'Dados Principais'
-      ExplicitLeft = 5
-      ExplicitTop = 28
     end
   end
   object imgHabilitadas: TImageList
