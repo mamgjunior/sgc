@@ -5,7 +5,8 @@ uses
   uPrincipal in 'view\uPrincipal.pas' {frmPrincipal},
   uRotinasGenericas in 'controller\uRotinasGenericas.pas',
   uDMModulo1 in 'dao\uDMModulo1.pas' {dmModuloDados1: TDataModule},
-  uMestreCadastro in 'view\uMestreCadastro.pas' {frmMestreCadastro};
+  uMestreCadastro in 'view\uMestreCadastro.pas' {frmMestreCadastro},
+  uMestreLocalizar in 'view\uMestreLocalizar.pas' {frmMestreLocalizar};
 
 {$R *.res}
 

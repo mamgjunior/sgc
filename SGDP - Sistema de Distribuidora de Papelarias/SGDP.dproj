@@ -118,6 +118,10 @@
             <Form>frmMestreCadastro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="view\uMestreLocalizar.pas">
+            <Form>frmMestreLocalizar</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
