@@ -369,3 +369,19 @@ AS
 BEGIN 
   new_value = GEN_ID(my_fornecedor_produto_id, 1);
 END;
+
+CREATE TABLE CONTROLE_SEQUENCIA(
+    registro CHAR(1) NOT NULL,
+    codigo_cargo DMCODIGO_CARGO,
+    codigo_interno DMCODIGO_INTERNO,
+    codigo_categoria DMCODIGO_CATEGORIA,
+    codigo_cliente DMCODIGO_CLIENTE,
+    codigo_departamento DMCODIGO_DEPTO,
+    codigo_descricao DMCODIGO_DESCRICAO,
+    codigo_familia DMCODIGO_FAMILIA,
+    registro_fornecedor DMREGISTRO,
+    codigo_fornecedor DMCODIGO_FORNECEDOR,
+    codigo_grupo DMCODIGO_GRUPO,
+    codigo_marca DMCODIGO_MARCA,
+    CONSTRAINT pk_controle_sequencia PRIMARY KEY(registro)
+)
