@@ -54,7 +54,7 @@ begin
   if Key = #13 then
   begin
     Key := #0;
-    Perform(WM_NEXTDLGCTL)
+    Perform(WM_NEXTDLGCTL, 0, 0);
   end;
 end;
 

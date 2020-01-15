@@ -100,6 +100,7 @@ object dmModuloDados1: TdmModuloDados1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
+    BeforeDelete = sdsFornecedoresBeforeDelete
     Left = 176
     Top = 8
   end
@@ -107,5 +108,181 @@ object dmModuloDados1: TdmModuloDados1
     DataSet = sdsFornecedores
     Left = 176
     Top = 56
+  end
+  object sdsControle: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'CONTROLE_SEQUENCIA'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    Left = 296
+    Top = 8
+    object sdsControleREGISTRO: TStringField
+      FieldName = 'REGISTRO'
+      Size = 1
+    end
+    object sdsControleCODIGO_CARGO: TIntegerField
+      FieldName = 'CODIGO_CARGO'
+    end
+    object sdsControleCODIGO_INTERNO: TIntegerField
+      FieldName = 'CODIGO_INTERNO'
+    end
+    object sdsControleCODIGO_CATEGORIA: TIntegerField
+      FieldName = 'CODIGO_CATEGORIA'
+    end
+    object sdsControleCODIGO_CLIENTE: TIntegerField
+      FieldName = 'CODIGO_CLIENTE'
+    end
+    object sdsControleCODIGO_DEPARTAMENTO: TIntegerField
+      FieldName = 'CODIGO_DEPARTAMENTO'
+    end
+    object sdsControleCODIGO_DESCRICAO: TIntegerField
+      FieldName = 'CODIGO_DESCRICAO'
+    end
+    object sdsControleCODIGO_FAMILIA: TIntegerField
+      FieldName = 'CODIGO_FAMILIA'
+    end
+    object sdsControleREGISTRO_FORNECEDOR: TIntegerField
+      FieldName = 'REGISTRO_FORNECEDOR'
+    end
+    object sdsControleCODIGO_FORNECEDOR: TIntegerField
+      FieldName = 'CODIGO_FORNECEDOR'
+    end
+    object sdsControleCODIGO_GRUPO: TIntegerField
+      FieldName = 'CODIGO_GRUPO'
+    end
+    object sdsControleCODIGO_MARCA: TIntegerField
+      FieldName = 'CODIGO_MARCA'
+    end
+  end
+  object dsControle: TDataSource
+    DataSet = sdsControle
+    Left = 295
+    Top = 57
+  end
+  object sdsDepartamentos: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'DEPARTAMENTOS'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    BeforeDelete = sdsDepartamentosBeforeDelete
+    Left = 383
+    Top = 8
+  end
+  object sdsCargos: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'CARGOS'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    BeforeDelete = sdsCargosBeforeDelete
+    Left = 472
+    Top = 10
+  end
+  object sdsFuncionarios: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'FUNCIONARIOS'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    BeforeDelete = sdsFuncionariosBeforeDelete
+    Left = 549
+    Top = 11
+  end
+  object dsDepartaentos: TDataSource
+    DataSet = sdsDepartamentos
+    Left = 381
+    Top = 57
+  end
+  object dsCargos: TDataSource
+    DataSet = sdsCargos
+    Left = 473
+    Top = 58
+  end
+  object dsFuncionarios: TDataSource
+    DataSet = sdsFuncionarios
+    Left = 550
+    Top = 58
   end
 end

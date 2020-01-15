@@ -3084,6 +3084,18 @@ object frmPrincipal: TfrmPrincipal
         OnClick = opcSairClick
       end
     end
+    object mnuCadastro: TMenuItem
+      Caption = '&Cadastro'
+      object opcCadDepartamentos: TMenuItem
+        Caption = 'Departamentos'
+      end
+      object opcCadCargos: TMenuItem
+        Caption = 'Cargos'
+      end
+      object opcCadFuncionarios: TMenuItem
+        Caption = 'Funcion'#225'rios'
+      end
+    end
   end
   object tmrPrincipal: TTimer
     OnTimer = tmrPrincipalTimer

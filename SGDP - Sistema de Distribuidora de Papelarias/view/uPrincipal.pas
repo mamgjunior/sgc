@@ -21,6 +21,10 @@ type
     stbPrincipal: TStatusBar;
     tmrPrincipal: TTimer;
     imgFundo: TImage;
+    mnuCadastro: TMenuItem;
+    opcCadDepartamentos: TMenuItem;
+    opcCadCargos: TMenuItem;
+    opcCadFuncionarios: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure tmrPrincipalTimer(Sender: TObject);
     procedure opcSairClick(Sender: TObject);
