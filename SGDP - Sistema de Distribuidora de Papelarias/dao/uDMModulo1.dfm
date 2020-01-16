@@ -209,6 +209,13 @@ object dmModuloDados1: TdmModuloDados1
     BeforeDelete = sdsDepartamentosBeforeDelete
     Left = 383
     Top = 8
+    object sdsDepartamentosCODIGO_DEPARTAMENTO: TIntegerField
+      FieldName = 'CODIGO_DEPARTAMENTO'
+    end
+    object sdsDepartamentosNOME_DEPARTAMENTO: TStringField
+      FieldName = 'NOME_DEPARTAMENTO'
+      Size = 30
+    end
   end
   object sdsCargos: TSimpleDataSet
     Aggregates = <>

@@ -36,6 +36,8 @@ type
     dsDepartaentos: TDataSource;
     dsCargos: TDataSource;
     dsFuncionarios: TDataSource;
+    sdsDepartamentosCODIGO_DEPARTAMENTO: TIntegerField;
+    sdsDepartamentosNOME_DEPARTAMENTO: TStringField;
     procedure sdsDepartamentosBeforeDelete(DataSet: TDataSet);
     procedure sdsFornecedoresBeforeDelete(DataSet: TDataSet);
     procedure sdsCargosBeforeDelete(DataSet: TDataSet);

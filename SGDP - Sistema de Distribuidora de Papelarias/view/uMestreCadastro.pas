@@ -47,7 +47,7 @@ type
   private
     { Private declarations }
   public
-    chrModo: Char;
+    chrModo: string;
     blnExcluir: Boolean;
   end;
 

@@ -122,6 +122,10 @@
             <Form>frmMestreLocalizar</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="view\uCadDepartametos.pas">
+            <Form>frmCadDepartametos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
