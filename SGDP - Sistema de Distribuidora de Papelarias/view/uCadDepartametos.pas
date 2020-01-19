@@ -21,8 +21,13 @@ type
     procedure btnAnteriorClick(Sender: TObject);
     procedure btnProximoClick(Sender: TObject);
     procedure btnUltimoClick(Sender: TObject);
+    procedure btnDesfazerClick(Sender: TObject);
+    procedure btnGravarClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
+    procedure grdDadosDblClick(Sender: TObject);
   private
     procedure MoveFoco;
+    function DataInvertida(const dtData: TDateTime): string;
   public
     { Public declarations }
   end;
@@ -81,6 +86,75 @@ begin
   MoveFoco;
 end;
 
+procedure TfrmCadDepartametos.btnDesfazerClick(Sender: TObject);
+begin
+  inherited;
+
+    if dmModuloDados1.sdsDepartamentos.State in [dsEdit, dsInsert] then
+    begin
+      try
+        dmModuloDados1.sdsDepartamentos.CancelUpdates;
+        MsgStatus('Alteraçoes desfeitas com sucesso...');
+      except
+        Mensagem('Impossível desfazer alterações!');
+      end;
+    end
+    else
+      Mensagem('Não há alteração a serem desfeitas!');
+
+    BloquearCampos(True);
+    MoveFoco;
+end;
+
+procedure TfrmCadDepartametos.btnExcluirClick(Sender: TObject);
+begin
+  if dmModuloDados1.sdsDepartamentos.State in [dsEdit, dsInsert] then
+  begin
+    dmModuloDados1.sdsDepartamentos.Post;
+    dmModuloDados1.sdsControle.ApplyUpdates(-1);
+  end;
+
+  try
+    dmModuloDados1.sdsDepartamentos.Delete;
+    MsgStatus('Registro excluído com sucesso...');
+  except
+    Mensagem('Registro não foi excluído!');
+  end;
+
+  BloquearCampos(True);
+  MoveFoco;
+  inherited;
+end;
+
+procedure TfrmCadDepartametos.btnGravarClick(Sender: TObject);
+begin
+  inherited;
+    if dmModuloDados1.sdsDepartamentos.State in [dsEdit, dsInsert] then
+    begin
+      try
+        if chrModo = 'I' then
+        begin
+          dmModuloDados1.sdsControle.Edit;
+          dmModuloDados1.sdsControleCODIGO_DEPARTAMENTO.AsInteger := dmModuloDados1.sdsControleCODIGO_DEPARTAMENTO.AsInteger + 1;
+          dmModuloDados1.sdsControle.Post;
+          dmModuloDados1.sdsControle.ApplyUpdates(-1);
+          dmModuloDados1.sdsDepartamentosCODIGO_DEPARTAMENTO.AsInteger := dmModuloDados1.sdsControleCODIGO_DEPARTAMENTO.AsInteger;
+        end;
+        dmModuloDados1.sdsDepartamentos.Post;
+        dmModuloDados1.sdsDepartamentos.ApplyUpdates(-1);
+        chrModo := EmptyStr;
+        MsgStatus('Dados gravados com sucesso...');
+      except
+        Mensagem('Não foi possível efetuar a gravação dos dados!');
+      end;
+    end
+    else
+      Mensagem('Não há alterações a serem gravadas!');
+
+    BloquearCampos(True);
+    MoveFoco;
+end;
+
 procedure TfrmCadDepartametos.btnPrimeiroClick(Sender: TObject);
 begin
   inherited;
@@ -109,6 +183,24 @@ begin
   inherited;
     dmModuloDados1.sdsDepartamentos.Last;
     MoveFoco;
+end;
+
+function TfrmCadDepartametos.DataInvertida(const dtData: TDateTime): string;
+var
+  wrdDia: Word;
+  wrdMes: Word;
+  wrdAno: Word;
+  strDia: string;
+  strMes: string;
+  strAno: string;
+  strData: string;
+begin
+  DecodeDate(dtData, wrdAno, wrdMes, wrdDia);
+  strDia := IntToStr(wrdDia);
+  strMes := IntToStr(wrdMes);
+  strAno := IntToStr(wrdAno);
+  strData := strAno + '/' + strMes + '/' + strDia;
+  Result := strData;
 end;
 
 procedure TfrmCadDepartametos.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -143,6 +235,13 @@ begin
     else
       chrModo := EmptyStr;
 
+    MoveFoco;
+end;
+
+procedure TfrmCadDepartametos.grdDadosDblClick(Sender: TObject);
+begin
+  inherited;
+    pgDados.ActivePageIndex := 0;
     MoveFoco;
 end;
 

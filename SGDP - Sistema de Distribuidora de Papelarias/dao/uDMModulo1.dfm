@@ -139,6 +139,8 @@ object dmModuloDados1: TdmModuloDados1
     Top = 8
     object sdsControleREGISTRO: TStringField
       FieldName = 'REGISTRO'
+      Required = True
+      FixedChar = True
       Size = 1
     end
     object sdsControleCODIGO_CARGO: TIntegerField

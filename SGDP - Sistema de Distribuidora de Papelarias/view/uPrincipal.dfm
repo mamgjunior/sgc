@@ -3088,6 +3088,7 @@ object frmPrincipal: TfrmPrincipal
       Caption = '&Cadastro'
       object opcCadDepartamentos: TMenuItem
         Caption = 'Departamentos'
+        OnClick = opcCadDepartamentosClick
       end
       object opcCadCargos: TMenuItem
         Caption = 'Cargos'

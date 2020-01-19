@@ -17,12 +17,15 @@ inherited frmCadDepartametos: TfrmCadDepartametos
       inherited btnProximo: TToolButton
         OnClick = btnProximoClick
       end
+      inherited btnLocalizar: TToolButton
+        Visible = False
+      end
     end
   end
   inherited pgDados: TPageControl
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 5
-      ExplicitTop = 28
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 670
       ExplicitHeight = 395
       object lblDepartamento: TLabel
@@ -59,6 +62,7 @@ inherited frmCadDepartametos: TfrmCadDepartametos
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnDblClick = grdDadosDblClick
         Columns = <
           item
             Alignment = taCenter

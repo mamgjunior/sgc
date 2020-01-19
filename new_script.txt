@@ -1,4 +1,4 @@
-/* Script de criação da base de dados do sistema de gerênciamento de distribuidora de papelarias */
+/* Script de criaÃ§Ã£o da base de dados do sistema de gerÃªnciamento de distribuidora de papelarias */
 
 /* Criando os dominios da base de dados */
 
@@ -49,45 +49,11 @@ CREATE TABLE FORNECEDORES(
     CONSTRAINT pk_fornecedores PRIMARY KEY(CODIGO_FORNECEDOR)
 );
 
-CREATE GENERATOR my_fornecedores_id;
-
-CREATE TRIGGER trigger_fornecedores_id FOR FORNECEDORES
-BEFORE INSERT
-AS
-BEGIN
-    IF (NEW.CODIGO_FORNECEDOR IS NULL) THEN
-      NEW.CODIGO_FORNECEDOR = GEN_ID(my_fornecedores_id, 1);
-END;
-
-CREATE PROCEDURE get_my_gen_fornecedores_id
-RETURNS (new_value INTEGER) 
-AS 
-BEGIN 
-  new_value = GEN_ID(my_fornecedores_id, 1);
-END;
-
 CREATE TABLE GRUPO_PRODUTOS(
     CODIGO_GRUPO DMCODIGO_GRUPO NOT NULL,
     DESCRICAO_GRUPO VARCHAR(30),
     CONSTRAINT pk_grupo_produtos PRIMARY KEY(CODIGO_GRUPO)
 );
-
-CREATE GENERATOR my_grupo_produtos_id;
-
-CREATE TRIGGER trigger_grupo_produtos_id FOR GRUPO_PRODUTOS
-BEFORE INSERT
-AS
-BEGIN
-    IF (NEW.CODIGO_GRUPO IS NULL) THEN
-      NEW.CODIGO_GRUPO = GEN_ID(my_grupo_produtos_id, 1);
-END;
-
-CREATE PROCEDURE get_my_gen_grupo_produtos_id
-RETURNS (new_value INTEGER) 
-AS 
-BEGIN 
-  new_value = GEN_ID(my_grupo_produtos_id, 1);
-END;
 
 CREATE TABLE CATEGORIA_PRODUTOS(
     CODIGO_CATEGORIA DMCODIGO_CATEGORIA NOT NULL, 
@@ -95,45 +61,11 @@ CREATE TABLE CATEGORIA_PRODUTOS(
     CONSTRAINT pk_categoria_produtos PRIMARY KEY(CODIGO_CATEGORIA)
 );
 
-CREATE GENERATOR my_categoria_produtos_id;
-
-CREATE TRIGGER trigger_categoria_produtos_id FOR CATEGORIA_PRODUTOS
-BEFORE INSERT
-AS
-BEGIN
-    IF (NEW.CODIGO_CATEGORIA IS NULL) THEN
-      NEW.CODIGO_CATEGORIA = GEN_ID(my_categoria_produtos_id, 1);
-END;
-
-CREATE PROCEDURE get_my_gen_cat_produtos_id
-RETURNS (new_value INTEGER) 
-AS 
-BEGIN 
-  new_value = GEN_ID(my_categoria_produtos_id, 1);
-END;
-
 CREATE TABLE FAMILIA_PRODUTOS(
     CODIGO_FAMILIA DMCODIGO_FAMILIA NOT NULL,
     DESCRICAO_FAMILIA VARCHAR(30),
     CONSTRAINT pk_familia_produtos PRIMARY KEY(CODIGO_FAMILIA)
 );
-
-CREATE GENERATOR my_familia_produtos_id;
-
-CREATE TRIGGER trigger_familia_produtos_id FOR FAMILIA_PRODUTOS
-BEFORE INSERT
-AS
-BEGIN
-    IF (NEW.CODIGO_FAMILIA IS NULL) THEN
-      NEW.CODIGO_FAMILIA = GEN_ID(my_familia_produtos_id, 1);
-END;
-
-CREATE PROCEDURE get_my_gen_fam_produtos_id
-RETURNS (new_value INTEGER) 
-AS 
-BEGIN 
-  new_value = GEN_ID(my_familia_produtos_id, 1);
-END;
 
 CREATE TABLE MARCA_PRODUTOS(
     CODIGO_MARCA DMCODIGO_MARCA NOT NULL,
@@ -141,45 +73,11 @@ CREATE TABLE MARCA_PRODUTOS(
     CONSTRAINT pk_marca_produtos PRIMARY KEY(CODIGO_MARCA)
 );
 
-CREATE GENERATOR my_marca_produtos_id;
-
-CREATE TRIGGER trigger_marca_produtos_id FOR MARCA_PRODUTOS
-BEFORE INSERT
-AS
-BEGIN
-    IF (NEW.CODIGO_MARCA IS NULL) THEN
-      NEW.CODIGO_MARCA = GEN_ID(my_marca_produtos_id, 1);
-END;
-
-CREATE PROCEDURE get_my_gen_marca_produtos_id
-RETURNS (new_value INTEGER) 
-AS 
-BEGIN 
-  new_value = GEN_ID(my_marca_produtos_id, 1);
-END;
-
 CREATE TABLE DESCRICAO_PRODUTOS(
     CODIGO_DESCRICAO DMCODIGO_DESCRICAO NOT NULL,
     DESCRICAO VARCHAR(30),
     CONSTRAINT pk_descricao_produtos PRIMARY KEY(CODIGO_DESCRICAO)
 );
-
-CREATE GENERATOR my_descricao_produtos_id;
-
-CREATE TRIGGER trigger_descricao_produtos_id FOR DESCRICAO_PRODUTOS
-BEFORE INSERT
-AS
-BEGIN
-    IF (NEW.CODIGO_DESCRICAO IS NULL) THEN
-      NEW.CODIGO_DESCRICAO = GEN_ID(my_descricao_produtos_id, 1);
-END;
-
-CREATE PROCEDURE get_my_gen_desc_produtos_id
-RETURNS (new_value INTEGER) 
-AS 
-BEGIN 
-  new_value = GEN_ID(my_descricao_produtos_id, 1);
-END;
 
 CREATE TABLE CATALOGO_PRODUTOS(
     CODIGO_INTERNO DMCODIGO_INTERNO NOT NULL,
@@ -201,23 +99,6 @@ CREATE TABLE CATALOGO_PRODUTOS(
     ESTOQUE_MINIMO DMESTOQUE,
     CONSTRAINT pk_catalogo_produtos PRIMARY KEY(CODIGO_INTERNO)
 );
-
-CREATE GENERATOR my_catalogo_produtos_id;
-
-CREATE TRIGGER trigger_catalogo_produtos_id FOR CATALOGO_PRODUTOS
-BEFORE INSERT
-AS
-BEGIN
-    IF (NEW.CODIGO_INTERNO IS NULL) THEN
-      NEW.CODIGO_INTERNO = GEN_ID(my_catalogo_produtos_id, 1);
-END;
-
-CREATE PROCEDURE get_my_gen_catal_produtos_id
-RETURNS (new_value INTEGER) 
-AS 
-BEGIN 
-  new_value = GEN_ID(my_catalogo_produtos_id, 1);
-END;
 
 CREATE TABLE CLIENTES_JURIDICO(
     CODIGO_CLIENTE DMCODIGO_CLIENTE NOT NULL, 
@@ -243,45 +124,11 @@ CREATE TABLE CLIENTES_JURIDICO(
     CONSTRAINT pk_clientes_juridico PRIMARY KEY(CODIGO_CLIENTE)
 );
 
-CREATE GENERATOR my_clientes_juridico_id;
-
-CREATE TRIGGER trigger_clientes_juridico_id FOR CLIENTES_JURIDICO
-BEFORE INSERT
-AS
-BEGIN
-    IF (NEW.CODIGO_CLIENTE IS NULL) THEN
-      NEW.CODIGO_CLIENTE = GEN_ID(my_clientes_juridico_id, 1);
-END;
-
-CREATE PROCEDURE get_my_gen_cli_juridico_id
-RETURNS (new_value INTEGER) 
-AS 
-BEGIN 
-  new_value = GEN_ID(my_clientes_juridico_id, 1);
-END;
-
 CREATE TABLE DEPARTAMENTOS(
     CODIGO_DEPARTAMENTO DMCODIGO_DEPTO NOT NULL,
     NOME_DEPARTAMENTO VARCHAR(30),
     CONSTRAINT pk_departamentos PRIMARY KEY(CODIGO_DEPARTAMENTO)
 );
-
-CREATE GENERATOR my_departamentos_id;
-
-CREATE TRIGGER trigger_departamentos_id FOR DEPARTAMENTOS
-BEFORE INSERT
-AS
-BEGIN
-    IF (NEW.CODIGO_DEPARTAMENTO IS NULL) THEN
-      NEW.CODIGO_DEPARTAMENTO = GEN_ID(my_departamentos_id, 1);
-END;
-
-CREATE PROCEDURE get_my_gen_departamentos_id
-RETURNS (new_value INTEGER) 
-AS 
-BEGIN 
-  new_value = GEN_ID(my_departamentos_id, 1);
-END;
 
 CREATE TABLE CARGOS(
     CODIGO_CARGO DMCODIGO_CARGO NOT NULL,
@@ -290,23 +137,6 @@ CREATE TABLE CARGOS(
     VENDEDOR_INTERNO CHAR(1),
     CONSTRAINT pk_cargos PRIMARY KEY(CODIGO_CARGO)
 );
-
-CREATE GENERATOR my_cargos_id;
-
-CREATE TRIGGER trigger_cargos_id FOR CARGOS
-BEFORE INSERT
-AS
-BEGIN
-    IF (NEW.CODIGO_CARGO IS NULL) THEN
-      NEW.CODIGO_CARGO = GEN_ID(my_cargos_id, 1);
-END;
-
-CREATE PROCEDURE get_my_generator_cargos_id
-RETURNS (new_value INTEGER) 
-AS 
-BEGIN 
-  new_value = GEN_ID(my_cargos_id, 1);
-END;
 
 CREATE TABLE FUNCIONARIOS(
     MATRICULA_FUNCIONARIO DMMATRICULA NOT NULL,
@@ -327,23 +157,6 @@ CREATE TABLE FUNCIONARIOS(
     CONSTRAINT fk_funcionarios_cargos FOREIGN KEY(CODIGO_CARGO) REFERENCES CARGOS(CODIGO_CARGO)
 );
 
-CREATE GENERATOR my_funcionarios_id;
-
-CREATE TRIGGER trigger_funcionarios_id FOR FUNCIONARIOS
-BEFORE INSERT
-AS
-BEGIN
-    IF (NEW.MATRICULA_FUNCIONARIO IS NULL) THEN
-      NEW.MATRICULA_FUNCIONARIO = GEN_ID(my_funcionarios_id, 1);
-END;
-
-CREATE PROCEDURE get_my_gen_funcionarios_id
-RETURNS (new_value INTEGER) 
-AS 
-BEGIN 
-  new_value = GEN_ID(my_funcionarios_id, 1);
-END;
-
 CREATE TABLE FORNECEDOR_PRODUTO(
     REGISTRO DMREGISTRO NOT NULL,
     CODIGO_FORNECEDOR DMCODIGO_FORNECEDOR,
@@ -352,23 +165,6 @@ CREATE TABLE FORNECEDOR_PRODUTO(
     DESCRICAO_PRODUTO VARCHAR(80),
     CONSTRAINT pk_fornecedor_produto PRIMARY KEY(REGISTRO)
 );
-
-CREATE GENERATOR my_fornecedor_produto_id;
-
-CREATE TRIGGER trigger_fornecedor_produto_id FOR FORNECEDOR_PRODUTO
-BEFORE INSERT
-AS
-BEGIN
-    IF (NEW.REGISTRO IS NULL) THEN
-      NEW.REGISTRO = GEN_ID(my_fornecedor_produto_id, 1);
-END;
-
-CREATE PROCEDURE get_my_gen_forn_produto_id
-RETURNS (new_value INTEGER) 
-AS 
-BEGIN 
-  new_value = GEN_ID(my_fornecedor_produto_id, 1);
-END;
 
 CREATE TABLE CONTROLE_SEQUENCIA(
     registro CHAR(1) NOT NULL,
@@ -385,3 +181,4 @@ CREATE TABLE CONTROLE_SEQUENCIA(
     codigo_marca DMCODIGO_MARCA,
     CONSTRAINT pk_controle_sequencia PRIMARY KEY(registro)
 )
+
