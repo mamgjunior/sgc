@@ -182,3 +182,8 @@ CREATE TABLE CONTROLE_SEQUENCIA(
     CONSTRAINT pk_controle_sequencia PRIMARY KEY(registro)
 )
 
+CREATE TABLE ESTADOS(
+    sigla_estado CHAR(2) NOT NULL,
+    estado VARCHAR(40),
+    CONSTRAINT pk_estados PRIMARY KEY(sigla_estado)
+)

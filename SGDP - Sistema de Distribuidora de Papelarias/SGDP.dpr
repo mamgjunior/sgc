@@ -7,7 +7,8 @@ uses
   uDMModulo1 in 'dao\uDMModulo1.pas' {dmModuloDados1: TDataModule},
   uMestreCadastro in 'view\uMestreCadastro.pas' {frmMestreCadastro},
   uMestreLocalizar in 'view\uMestreLocalizar.pas' {frmMestreLocalizar},
-  uCadDepartametos in 'view\uCadDepartametos.pas' {frmCadDepartametos};
+  uCadDepartametos in 'view\uCadDepartametos.pas' {frmCadDepartametos},
+  uCadCargos in 'view\uCadCargos.pas' {frmCadCargos};
 
 {$R *.res}
 

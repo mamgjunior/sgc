@@ -38,6 +38,14 @@ type
     sdsControleCODIGO_FORNECEDOR: TIntegerField;
     sdsControleCODIGO_GRUPO: TIntegerField;
     sdsControleCODIGO_MARCA: TIntegerField;
+    sdsEstados: TSimpleDataSet;
+    dsEstados: TDataSource;
+    sdsEstadosSIGLA_ESTADO: TStringField;
+    sdsEstadosESTADO: TStringField;
+    sdsCargosCODIGO_CARGO: TIntegerField;
+    sdsCargosDESCRICAO_CARGO: TStringField;
+    sdsCargosVENDEDOR_EXTERNO: TStringField;
+    sdsCargosVENDEDOR_INTERNO: TStringField;
     procedure sdsDepartamentosBeforeDelete(DataSet: TDataSet);
     procedure sdsFornecedoresBeforeDelete(DataSet: TDataSet);
     procedure sdsCargosBeforeDelete(DataSet: TDataSet);

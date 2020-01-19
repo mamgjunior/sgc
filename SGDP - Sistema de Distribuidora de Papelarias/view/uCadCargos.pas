@@ -1,4 +1,4 @@
-unit uCadDepartametos;
+unit uCadCargos;
 
 interface
 
@@ -9,31 +9,34 @@ uses
   Data.DB, Vcl.Grids, Vcl.DBGrids;
 
 type
-  TfrmCadDepartametos = class(TfrmMestreCadastro)
-    lblDepartamento: TLabel;
-    edtDepartamento: TDBEdit;
+  TfrmCadCargos = class(TfrmMestreCadastro)
     tabListaRegistros: TTabSheet;
+    lblCargo: TLabel;
+    edtCargo: TDBEdit;
+    cbkVendedorInterno: TDBCheckBox;
+    ckbVendedorExterno: TDBCheckBox;
     grdDados: TDBGrid;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnAdicionarClick(Sender: TObject);
     procedure btnPrimeiroClick(Sender: TObject);
-    procedure btnAnteriorClick(Sender: TObject);
     procedure btnProximoClick(Sender: TObject);
+    procedure btnAnteriorClick(Sender: TObject);
     procedure btnUltimoClick(Sender: TObject);
     procedure btnDesfazerClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
     procedure grdDadosDblClick(Sender: TObject);
+    procedure grdDadosKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     procedure MoveFoco;
-    function DataInvertida(const dtData: TDateTime): string;
   public
     { Public declarations }
   end;
 
 var
-  frmCadDepartametos: TfrmCadDepartametos;
+  frmCadCargos: TfrmCadCargos;
 
 implementation
 
@@ -42,15 +45,18 @@ implementation
 uses
   uDMModulo1, uRotinasGenericas;
 
-{ TfrmCadDepartametos }
+{ TfrmCadCargos }
 
-procedure TfrmCadDepartametos.btnAdicionarClick(Sender: TObject);
+procedure TfrmCadCargos.btnAdicionarClick(Sender: TObject);
 begin
   inherited;
+
     if Sender = btnAdicionar then
     begin
       try
-        dmModuloDados1.sdsDepartamentos.Append;
+        dmModuloDados1.sdsCargos.Append;
+        dmModuloDados1.sdsCargosVENDEDOR_EXTERNO.AsString := 'N';
+        dmModuloDados1.sdsCargosVENDEDOR_INTERNO.AsString := 'N';
         chrModo := 'I';
       except
         MsgStatus(EmptyStr);
@@ -60,40 +66,40 @@ begin
     else if Sender = btnEditar then
     begin
       try
-        dmModuloDados1.sdsDepartamentos.Edit;
+        dmModuloDados1.sdsCargos.Edit;
         chrModo := 'A';
       except
         MsgStatus(EmptyStr);
         Mensagem('Impossível entrar no modo de edição!');
       end;
     end;
+
     MoveFoco;
 end;
 
-procedure TfrmCadDepartametos.btnAnteriorClick(Sender: TObject);
+procedure TfrmCadCargos.btnAnteriorClick(Sender: TObject);
 begin
   inherited;
-  dmModuloDados1.sdsDepartamentos.Prior;
+    dmModuloDados1.sdsCargos.Prior;
 
-  if dmModuloDados1.sdsDepartamentos.Bof then
-  begin
-    MsgStatus('Início da tabela...');
-    dmModuloDados1.sdsDepartamentos.First;
-  end
-  else
-    MsgStatus(EmptyStr);
+    if dmModuloDados1.sdsCargos.Bof then
+    begin
+      MsgStatus('Início da tabela...');
+      dmModuloDados1.sdsCargos.First;
+    end
+    else
+      MsgStatus(EmptyStr);
 
-  MoveFoco;
+    MoveFoco;
 end;
 
-procedure TfrmCadDepartametos.btnDesfazerClick(Sender: TObject);
+procedure TfrmCadCargos.btnDesfazerClick(Sender: TObject);
 begin
   inherited;
-
-    if dmModuloDados1.sdsDepartamentos.State in [dsEdit, dsInsert] then
+    if dmModuloDados1.sdsCargos.State in [dsEdit, dsInsert] then
     begin
       try
-        dmModuloDados1.sdsDepartamentos.CancelUpdates;
+        dmModuloDados1.sdsCargos.CancelUpdates;
         MsgStatus('Alteraçoes desfeitas com sucesso...');
       except
         Mensagem('Impossível desfazer alterações!');
@@ -106,16 +112,16 @@ begin
     MoveFoco;
 end;
 
-procedure TfrmCadDepartametos.btnExcluirClick(Sender: TObject);
+procedure TfrmCadCargos.btnExcluirClick(Sender: TObject);
 begin
-  if dmModuloDados1.sdsDepartamentos.State in [dsEdit, dsInsert] then
+  if dmModuloDados1.sdsCargos.State in [dsEdit, dsInsert] then
   begin
-    dmModuloDados1.sdsDepartamentos.Post;
-    dmModuloDados1.sdsControle.ApplyUpdates(-1);
+    dmModuloDados1.sdsCargos.Post;
+    dmModuloDados1.sdsCargos.ApplyUpdates(-1);
   end;
 
   try
-    dmModuloDados1.sdsDepartamentos.Delete;
+    dmModuloDados1.sdsCargos.Delete;
     MsgStatus('Registro excluído com sucesso...');
   except
     Mensagem('Registro não foi excluído!');
@@ -123,25 +129,26 @@ begin
 
   BloquearCampos(True);
   MoveFoco;
+
   inherited;
 end;
 
-procedure TfrmCadDepartametos.btnGravarClick(Sender: TObject);
+procedure TfrmCadCargos.btnGravarClick(Sender: TObject);
 begin
   inherited;
-    if dmModuloDados1.sdsDepartamentos.State in [dsEdit, dsInsert] then
+    if dmModuloDados1.sdsCargos.State in [dsEdit, dsInsert] then
     begin
       try
         if chrModo = 'I' then
         begin
           dmModuloDados1.sdsControle.Edit;
-          dmModuloDados1.sdsControleCODIGO_DEPARTAMENTO.AsInteger := dmModuloDados1.sdsControleCODIGO_DEPARTAMENTO.AsInteger + 1;
+          dmModuloDados1.sdsControleCODIGO_CARGO.AsInteger := dmModuloDados1.sdsControleCODIGO_CARGO.AsInteger + 1;
           dmModuloDados1.sdsControle.Post;
           dmModuloDados1.sdsControle.ApplyUpdates(-1);
-          dmModuloDados1.sdsDepartamentosCODIGO_DEPARTAMENTO.AsInteger := dmModuloDados1.sdsControleCODIGO_DEPARTAMENTO.AsInteger;
+          dmModuloDados1.sdsCargosCODIGO_CARGO.AsInteger := dmModuloDados1.sdsControleCODIGO_CARGO.AsInteger;
         end;
-        dmModuloDados1.sdsDepartamentos.Post;
-        dmModuloDados1.sdsDepartamentos.ApplyUpdates(-1);
+        dmModuloDados1.sdsCargos.Post;
+        dmModuloDados1.sdsCargos.ApplyUpdates(-1);
         chrModo := EmptyStr;
         MsgStatus('Dados gravados com sucesso...');
       except
@@ -155,22 +162,22 @@ begin
     MoveFoco;
 end;
 
-procedure TfrmCadDepartametos.btnPrimeiroClick(Sender: TObject);
+procedure TfrmCadCargos.btnPrimeiroClick(Sender: TObject);
 begin
   inherited;
-    dmModuloDados1.sdsDepartamentos.First;
+    dmModuloDados1.sdsCargos.First;
     MoveFoco;
 end;
 
-procedure TfrmCadDepartametos.btnProximoClick(Sender: TObject);
+procedure TfrmCadCargos.btnProximoClick(Sender: TObject);
 begin
   inherited;
-    dmModuloDados1.sdsDepartamentos.Next;
+    dmModuloDados1.sdsCargos.Next;
 
-    if dmModuloDados1.sdsDepartamentos.Eof then
+    if dmModuloDados1.sdsCargos.Eof then
     begin
       MsgStatus('Fim da tabela...');
-      dmModuloDados1.sdsDepartamentos.Last;
+      dmModuloDados1.sdsCargos.Last;
     end
     else
       MsgStatus(EmptyStr);
@@ -178,45 +185,27 @@ begin
     MoveFoco;
 end;
 
-procedure TfrmCadDepartametos.btnUltimoClick(Sender: TObject);
+procedure TfrmCadCargos.btnUltimoClick(Sender: TObject);
 begin
   inherited;
-    dmModuloDados1.sdsDepartamentos.Last;
+    dmModuloDados1.sdsCargos.Last;
     MoveFoco;
 end;
 
-function TfrmCadDepartametos.DataInvertida(const dtData: TDateTime): string;
-var
-  wrdDia: Word;
-  wrdMes: Word;
-  wrdAno: Word;
-  strDia: string;
-  strMes: string;
-  strAno: string;
-  strData: string;
-begin
-  DecodeDate(dtData, wrdAno, wrdMes, wrdDia);
-  strDia := IntToStr(wrdDia);
-  strMes := IntToStr(wrdMes);
-  strAno := IntToStr(wrdAno);
-  strData := strAno + '/' + strMes + '/' + strDia;
-  Result := strData;
-end;
-
-procedure TfrmCadDepartametos.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TfrmCadCargos.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   dmModuloDados1.sdsControle.Close;
-  dmModuloDados1.sdsDepartamentos.Close;
+  dmModuloDados1.sdsCargos.Close;
   inherited;
 end;
 
-procedure TfrmCadDepartametos.FormShow(Sender: TObject);
+procedure TfrmCadCargos.FormShow(Sender: TObject);
 begin
   inherited;
     dmModuloDados1.sdsControle.Open;
-    dmModuloDados1.sdsDepartamentos.Open;
+    dmModuloDados1.sdsCargos.Open;
 
-    if dmModuloDados1.sdsDepartamentos.IsEmpty then
+    if dmModuloDados1.sdsCargos.IsEmpty then
     begin
       BloquearCampos(False);
 
@@ -228,9 +217,11 @@ begin
       chrModo := 'I';
 
       dmModuloDados1.sdsControle.Edit;
-      dmModuloDados1.sdsControleCODIGO_DEPARTAMENTO.AsInteger := 0;
+      dmModuloDados1.sdsControleCODIGO_CARGO.AsInteger := 0;
       dmModuloDados1.sdsControle.Post;
-      dmModuloDados1.sdsDepartamentos.Append;
+      dmModuloDados1.sdsCargos.Append;
+      dmModuloDados1.sdsCargosVENDEDOR_EXTERNO.AsString := 'N';
+      dmModuloDados1.sdsCargosVENDEDOR_INTERNO.AsString := 'N';
     end
     else
       chrModo := EmptyStr;
@@ -238,17 +229,25 @@ begin
     MoveFoco;
 end;
 
-procedure TfrmCadDepartametos.grdDadosDblClick(Sender: TObject);
+procedure TfrmCadCargos.grdDadosDblClick(Sender: TObject);
 begin
   inherited;
-    pgDados.ActivePageIndex := 0;
-    MoveFoco;
+  pgDados.ActivePageIndex := 0;
+  MoveFoco;
 end;
 
-procedure TfrmCadDepartametos.MoveFoco;
+procedure TfrmCadCargos.grdDadosKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+    if ((Shift = [ssCtrl]) and (Key = VK_DELETE)) then
+      Key := 0;
+end;
+
+procedure TfrmCadCargos.MoveFoco;
 begin
   if pgDados.ActivePageIndex = 0 then
-    edtDepartamento.SetFocus;
+    edtCargo.SetFocus;
 end;
 
 end.

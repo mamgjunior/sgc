@@ -3092,6 +3092,7 @@ object frmPrincipal: TfrmPrincipal
       end
       object opcCadCargos: TMenuItem
         Caption = 'Cargos'
+        OnClick = opcCadCargosClick
       end
       object opcCadFuncionarios: TMenuItem
         Caption = 'Funcion'#225'rios'

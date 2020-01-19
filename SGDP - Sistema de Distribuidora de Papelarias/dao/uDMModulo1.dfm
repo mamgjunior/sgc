@@ -248,6 +248,24 @@ object dmModuloDados1: TdmModuloDados1
     BeforeDelete = sdsCargosBeforeDelete
     Left = 472
     Top = 10
+    object sdsCargosCODIGO_CARGO: TIntegerField
+      FieldName = 'CODIGO_CARGO'
+      Required = True
+    end
+    object sdsCargosDESCRICAO_CARGO: TStringField
+      FieldName = 'DESCRICAO_CARGO'
+      Size = 40
+    end
+    object sdsCargosVENDEDOR_EXTERNO: TStringField
+      FieldName = 'VENDEDOR_EXTERNO'
+      FixedChar = True
+      Size = 1
+    end
+    object sdsCargosVENDEDOR_INTERNO: TStringField
+      FieldName = 'VENDEDOR_INTERNO'
+      FixedChar = True
+      Size = 1
+    end
   end
   object sdsFuncionarios: TSimpleDataSet
     Aggregates = <>
@@ -293,5 +311,48 @@ object dmModuloDados1: TdmModuloDados1
     DataSet = sdsFuncionarios
     Left = 550
     Top = 58
+  end
+  object sdsEstados: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    DataSet.CommandText = 'ESTADOS'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    Left = 160
+    Top = 232
+    object sdsEstadosSIGLA_ESTADO: TStringField
+      FieldName = 'SIGLA_ESTADO'
+      Required = True
+      FixedChar = True
+      Size = 2
+    end
+    object sdsEstadosESTADO: TStringField
+      FieldName = 'ESTADO'
+      Size = 40
+    end
+  end
+  object dsEstados: TDataSource
+    DataSet = sdsEstados
+    Left = 224
+    Top = 233
   end
 end

@@ -30,6 +30,7 @@ type
     procedure opcSairClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure opcCadDepartamentosClick(Sender: TObject);
+    procedure opcCadCargosClick(Sender: TObject);
   private
     procedure MostrarDicas(Sender: TObject);
   public
@@ -44,7 +45,7 @@ implementation
 {$R *.dfm}
 
 uses
-  uRotinasGenericas, uCadDepartametos;
+  uRotinasGenericas, uCadDepartametos, uCadCargos;
 
 procedure TfrmPrincipal.btnSairClick(Sender: TObject);
 begin
@@ -67,6 +68,18 @@ end;
 procedure TfrmPrincipal.MostrarDicas(Sender: TObject);
 begin
   stbPrincipal.Panels[3].Text := Application.Hint;
+end;
+
+procedure TfrmPrincipal.opcCadCargosClick(Sender: TObject);
+var
+  formulario: TfrmCadCargos;
+begin
+  if (Application.FindComponent('frmCadCargos') = nil) then
+  begin
+    formulario := TfrmCadCargos.Create(Application);
+    formulario.Top := 0;
+    formulario.Left := 0;
+  end;
 end;
 
 procedure TfrmPrincipal.opcCadDepartamentosClick(Sender: TObject);
