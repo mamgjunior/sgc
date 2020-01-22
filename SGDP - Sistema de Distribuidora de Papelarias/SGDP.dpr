@@ -7,8 +7,9 @@ uses
   uDMModulo1 in 'dao\uDMModulo1.pas' {dmModuloDados1: TDataModule},
   uMestreCadastro in 'view\uMestreCadastro.pas' {frmMestreCadastro},
   uMestreLocalizar in 'view\uMestreLocalizar.pas' {frmMestreLocalizar},
-  uCadDepartametos in 'view\uCadDepartametos.pas' {frmCadDepartametos},
-  uCadCargos in 'view\uCadCargos.pas' {frmCadCargos};
+  uCadFuncionarios in 'view\cadastros\uCadFuncionarios.pas' {frmCadFuncionarios},
+  uCadCargos in 'view\cadastros\uCadCargos.pas' {frmCadCargos},
+  uCadDepartametos in 'view\cadastros\uCadDepartametos.pas' {frmCadDepartametos};
 
 {$R *.res}
 
@@ -17,5 +18,7 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmModuloDados1, dmModuloDados1);
+  Application.CreateForm(TfrmCadCargos, frmCadCargos);
+  Application.CreateForm(TfrmCadDepartametos, frmCadDepartametos);
   Application.Run;
 end.

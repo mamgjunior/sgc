@@ -122,12 +122,16 @@
             <Form>frmMestreLocalizar</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="view\uCadDepartametos.pas">
-            <Form>frmCadDepartametos</Form>
+        <DCCReference Include="view\cadastros\uCadFuncionarios.pas">
+            <Form>frmCadFuncionarios</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="view\uCadCargos.pas">
+        <DCCReference Include="view\cadastros\uCadCargos.pas">
             <Form>frmCadCargos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\cadastros\uCadDepartametos.pas">
+            <Form>frmCadDepartametos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
