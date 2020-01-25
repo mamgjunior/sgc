@@ -10,11 +10,19 @@ inherited frmCadFuncionarios: TfrmCadFuncionarios
         MinHeight = 39
         Width = 688
       end>
+    inherited tlbCadastro: TToolBar
+      inherited btnAnterior: TToolButton
+        OnClick = btnAnteriorClick
+      end
+      inherited btnProximo: TToolButton
+        OnClick = btnProximoClick
+      end
+    end
   end
   inherited pgDados: TPageControl
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 5
-      ExplicitTop = 28
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 670
       ExplicitHeight = 395
       object lblMatricula: TLabel
@@ -114,6 +122,8 @@ inherited frmCadFuncionarios: TfrmCadFuncionarios
         DataField = 'MATRICULA_FUNCIONARIO'
         DataSource = dmModuloDados1.dsFuncionarios
         TabOrder = 0
+        OnEnter = edtMatriculaEnter
+        OnExit = edtMatriculaExit
       end
       object edtFuncionario: TDBEdit
         Left = 87

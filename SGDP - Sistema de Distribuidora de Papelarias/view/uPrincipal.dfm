@@ -3096,6 +3096,7 @@ object frmPrincipal: TfrmPrincipal
       end
       object opcCadFuncionarios: TMenuItem
         Caption = 'Funcion'#225'rios'
+        OnClick = opcCadFuncionariosClick
       end
     end
   end

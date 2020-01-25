@@ -18,7 +18,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmModuloDados1, dmModuloDados1);
-  Application.CreateForm(TfrmCadCargos, frmCadCargos);
-  Application.CreateForm(TfrmCadDepartametos, frmCadDepartametos);
   Application.Run;
 end.

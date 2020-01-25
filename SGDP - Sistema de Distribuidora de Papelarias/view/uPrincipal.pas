@@ -31,6 +31,7 @@ type
     procedure btnSairClick(Sender: TObject);
     procedure opcCadDepartamentosClick(Sender: TObject);
     procedure opcCadCargosClick(Sender: TObject);
+    procedure opcCadFuncionariosClick(Sender: TObject);
   private
     procedure MostrarDicas(Sender: TObject);
   public
@@ -45,7 +46,7 @@ implementation
 {$R *.dfm}
 
 uses
-  uRotinasGenericas, uCadDepartametos, uCadCargos;
+  uRotinasGenericas, uCadDepartametos, uCadCargos, uCadFuncionarios;
 
 procedure TfrmPrincipal.btnSairClick(Sender: TObject);
 begin
@@ -89,6 +90,18 @@ begin
   if (Application.FindComponent('frmCadDepartametos') = nil) then
   begin
     formulario := TfrmCadDepartametos.Create(Application);
+    formulario.Top := 0;
+    formulario.Left := 0;
+  end;
+end;
+
+procedure TfrmPrincipal.opcCadFuncionariosClick(Sender: TObject);
+var
+  formulario: TfrmCadFuncionarios;
+begin
+  if (Application.FindComponent('frmCadFuncionarios') = nil) then
+  begin
+    formulario := TfrmCadFuncionarios.Create(Application);
     formulario.Top := 0;
     formulario.Left := 0;
   end;
