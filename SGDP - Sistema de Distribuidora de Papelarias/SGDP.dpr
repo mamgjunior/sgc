@@ -9,7 +9,8 @@ uses
   uMestreLocalizar in 'view\uMestreLocalizar.pas' {frmMestreLocalizar},
   uCadFuncionarios in 'view\cadastros\uCadFuncionarios.pas' {frmCadFuncionarios},
   uCadCargos in 'view\cadastros\uCadCargos.pas' {frmCadCargos},
-  uCadDepartametos in 'view\cadastros\uCadDepartametos.pas' {frmCadDepartametos};
+  uCadDepartametos in 'view\cadastros\uCadDepartametos.pas' {frmCadDepartametos},
+  uLocalizaFuncionarios in 'view\pesquisa\uLocalizaFuncionarios.pas' {frmLocalizaFuncionarios};
 
 {$R *.res}
 

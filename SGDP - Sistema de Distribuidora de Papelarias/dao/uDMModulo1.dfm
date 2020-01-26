@@ -296,6 +296,60 @@ object dmModuloDados1: TdmModuloDados1
     BeforeDelete = sdsFuncionariosBeforeDelete
     Left = 549
     Top = 11
+    object sdsFuncionariosMATRICULA_FUNCIONARIO: TStringField
+      FieldName = 'MATRICULA_FUNCIONARIO'
+      Required = True
+      FixedChar = True
+      Size = 5
+    end
+    object sdsFuncionariosNOME_FUNCIONARIO: TStringField
+      FieldName = 'NOME_FUNCIONARIO'
+      Size = 50
+    end
+    object sdsFuncionariosENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Size = 50
+    end
+    object sdsFuncionariosNUMERO: TStringField
+      FieldName = 'NUMERO'
+      FixedChar = True
+      Size = 5
+    end
+    object sdsFuncionariosCOMPLEMENTO: TStringField
+      FieldName = 'COMPLEMENTO'
+    end
+    object sdsFuncionariosBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Size = 40
+    end
+    object sdsFuncionariosCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Size = 40
+    end
+    object sdsFuncionariosESTADO: TStringField
+      FieldName = 'ESTADO'
+      FixedChar = True
+      Size = 2
+    end
+    object sdsFuncionariosCEP: TStringField
+      FieldName = 'CEP'
+      FixedChar = True
+      Size = 9
+    end
+    object sdsFuncionariosTELEFONE: TStringField
+      FieldName = 'TELEFONE'
+      Size = 16
+    end
+    object sdsFuncionariosEMAIL: TStringField
+      FieldName = 'EMAIL'
+      Size = 80
+    end
+    object sdsFuncionariosCODIGO_DEPARTAMENTO: TIntegerField
+      FieldName = 'CODIGO_DEPARTAMENTO'
+    end
+    object sdsFuncionariosCODIGO_CARGO: TIntegerField
+      FieldName = 'CODIGO_CARGO'
+    end
   end
   object dsDepartaentos: TDataSource
     DataSet = sdsDepartamentos

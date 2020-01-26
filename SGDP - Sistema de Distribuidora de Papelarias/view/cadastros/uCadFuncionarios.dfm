@@ -121,6 +121,7 @@ inherited frmCadFuncionarios: TfrmCadFuncionarios
         CharCase = ecUpperCase
         DataField = 'MATRICULA_FUNCIONARIO'
         DataSource = dmModuloDados1.dsFuncionarios
+        MaxLength = 5
         TabOrder = 0
         OnEnter = edtMatriculaEnter
         OnExit = edtMatriculaExit
@@ -133,6 +134,7 @@ inherited frmCadFuncionarios: TfrmCadFuncionarios
         CharCase = ecUpperCase
         DataField = 'NOME_FUNCIONARIO'
         DataSource = dmModuloDados1.dsFuncionarios
+        MaxLength = 50
         TabOrder = 1
       end
       object edtEndereco: TDBEdit
@@ -143,6 +145,7 @@ inherited frmCadFuncionarios: TfrmCadFuncionarios
         CharCase = ecUpperCase
         DataField = 'ENDERECO'
         DataSource = dmModuloDados1.dsFuncionarios
+        MaxLength = 50
         TabOrder = 2
       end
       object edtComplemento: TDBEdit
@@ -153,6 +156,7 @@ inherited frmCadFuncionarios: TfrmCadFuncionarios
         CharCase = ecUpperCase
         DataField = 'COMPLEMENTO'
         DataSource = dmModuloDados1.dsFuncionarios
+        MaxLength = 20
         TabOrder = 4
       end
       object edtCidade: TDBEdit
@@ -163,6 +167,7 @@ inherited frmCadFuncionarios: TfrmCadFuncionarios
         CharCase = ecUpperCase
         DataField = 'CIDADE'
         DataSource = dmModuloDados1.dsFuncionarios
+        MaxLength = 40
         TabOrder = 6
       end
       object edtCEP: TDBEdit
@@ -173,6 +178,7 @@ inherited frmCadFuncionarios: TfrmCadFuncionarios
         CharCase = ecUpperCase
         DataField = 'CEP'
         DataSource = dmModuloDados1.dsFuncionarios
+        MaxLength = 9
         TabOrder = 8
       end
       object edtTelefone: TDBEdit
@@ -183,6 +189,7 @@ inherited frmCadFuncionarios: TfrmCadFuncionarios
         CharCase = ecUpperCase
         DataField = 'TELEFONE'
         DataSource = dmModuloDados1.dsFuncionarios
+        MaxLength = 16
         TabOrder = 9
       end
       object edtNumero: TDBEdit
@@ -193,16 +200,18 @@ inherited frmCadFuncionarios: TfrmCadFuncionarios
         CharCase = ecUpperCase
         DataField = 'NUMERO'
         DataSource = dmModuloDados1.dsFuncionarios
+        MaxLength = 5
         TabOrder = 3
       end
       object edtBairro: TDBEdit
         Left = 402
-        Top = 104
+        Top = 106
         Width = 208
         Height = 21
         CharCase = ecUpperCase
         DataField = 'BAIRRO'
         DataSource = dmModuloDados1.dsFuncionarios
+        MaxLength = 40
         TabOrder = 5
       end
       object lcbEstados: TDBLookupComboBox

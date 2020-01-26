@@ -60,7 +60,7 @@ implementation
 {$R *.dfm}
 
 uses
-  uDMModulo1, uRotinasGenericas;
+  uDMModulo1, uRotinasGenericas, uLocalizaFuncionarios;
 
 { TfrmCadFuncionarios }
 
@@ -129,9 +129,10 @@ end;
 procedure TfrmCadFuncionarios.btnExcluirClick(Sender: TObject);
 begin
   if dmModuloDados1.sdsFuncionarios.State in [dsEdit, dsInsert] then
+  begin
     dmModuloDados1.sdsFuncionarios.Post;
-
-  dmModuloDados1.sdsFuncionarios.ApplyUpdates(-1);
+    dmModuloDados1.sdsFuncionarios.ApplyUpdates(-1);
+  end;
 
   try
     dmModuloDados1.sdsFuncionarios.Delete;
@@ -173,17 +174,17 @@ var
 begin
   inherited;
     intRegistro := dmModuloDados1.sdsFuncionarios.RecNo;
-//    Application.CreateForm(TfrmLocalizarFuncionario, frmLocalizarFuncionario);
-//    if frmLocalizarFuncionario.ShowModal = mrOk then
-//    begin
-//      dmModuloDados1.sdsFuncionarios.IndexFieldNames := 'Matricula_Funcionario';
-//      dmModuloDados1.sdsFuncionarios.FindKey([frmLocalizarFuncionario.strValor]);
-//      dmModuloDados1.sdsFuncionarios.IndexFieldNames := EmptyStr;
-//    end
-//    else
-//      dmModuloDados1.sdsFuncionarios.RecNo := intRegistro;
-//
-//    frmLocalizarFuncionario.Destroy;
+    Application.CreateForm(TfrmLocalizaFuncionarios, frmLocalizaFuncionarios);
+    if frmLocalizaFuncionarios.ShowModal = mrOk then
+    begin
+      dmModuloDados1.sdsFuncionarios.IndexFieldNames := 'Matricula_Funcionario';
+      dmModuloDados1.sdsFuncionarios.FindKey([frmLocalizaFuncionarios.strValor]);
+      dmModuloDados1.sdsFuncionarios.IndexFieldNames := EmptyStr;
+    end
+    else
+      dmModuloDados1.sdsFuncionarios.RecNo := intRegistro;
+
+    frmLocalizaFuncionarios.Destroy;
 end;
 
 procedure TfrmCadFuncionarios.btnPrimeiroClick(Sender: TObject);
