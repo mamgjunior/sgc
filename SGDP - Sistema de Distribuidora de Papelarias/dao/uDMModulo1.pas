@@ -9,13 +9,8 @@ uses
 
 type
   TdmModuloDados1 = class(TDataModule)
-    SQLConnection1: TSQLConnection;
-    tblFornecedores: TSQLDataSet;
-    dspFornecedores: TDataSetProvider;
-    cdsFornecedores: TClientDataSet;
-    dsFornecedores: TDataSource;
     sdsFornecedores: TSimpleDataSet;
-    dsFornecedores2: TDataSource;
+    dsFornecedores: TDataSource;
     sdsControle: TSimpleDataSet;
     dsControle: TDataSource;
     sdsDepartamentos: TSimpleDataSet;
@@ -59,6 +54,24 @@ type
     sdsFuncionariosEMAIL: TStringField;
     sdsFuncionariosCODIGO_DEPARTAMENTO: TIntegerField;
     sdsFuncionariosCODIGO_CARGO: TIntegerField;
+    sdsFornecedoresCODIGO_FORNECEDOR: TIntegerField;
+    sdsFornecedoresRAZAO_SOCIAL: TStringField;
+    sdsFornecedoresNOME_FANTASIA: TStringField;
+    sdsFornecedoresENDERECO: TStringField;
+    sdsFornecedoresNUMERO: TStringField;
+    sdsFornecedoresCOMPLEMENTO: TStringField;
+    sdsFornecedoresBAIRRO: TStringField;
+    sdsFornecedoresCIDADE: TStringField;
+    sdsFornecedoresESTADO: TStringField;
+    sdsFornecedoresCEP: TStringField;
+    sdsFornecedoresINSCRICAO_ESTADUAL: TStringField;
+    sdsFornecedoresTELEFONE: TStringField;
+    sdsFornecedoresCONTATO_COMERCIAL: TStringField;
+    strngfldFornecedoresCNPJ: TStringField;
+    strngfldFornecedoresEMAIL: TStringField;
+    strngfldFornecedoresHOME_PAGE: TStringField;
+    strngfldFornecedoresFAX: TStringField;
+    strngfldFornecedoresFONE_COMERCIAL: TStringField;
     procedure sdsDepartamentosBeforeDelete(DataSet: TDataSet);
     procedure sdsFornecedoresBeforeDelete(DataSet: TDataSet);
     procedure sdsCargosBeforeDelete(DataSet: TDataSet);

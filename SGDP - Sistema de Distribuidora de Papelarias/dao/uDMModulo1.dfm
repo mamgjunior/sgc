@@ -2,78 +2,6 @@ object dmModuloDados1: TdmModuloDados1
   OldCreateOrder = False
   Height = 349
   Width = 613
-  object SQLConnection1: TSQLConnection
-    DriverName = 'Firebird'
-    LoginPrompt = False
-    Params.Strings = (
-      'DriverUnit=Data.DBXFirebird'
-      
-        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver260.' +
-        'bpl'
-      
-        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
-        'nd.Data.DbxCommonDriver,Version=24.0.0.0,Culture=neutral,PublicK' +
-        'eyToken=91d62ebb5b0d1b1b'
-      
-        'MetaDataPackageLoader=TDBXFirebirdMetaDataCommandFactory,DbxFire' +
-        'birdDriver260.bpl'
-      
-        'MetaDataAssemblyLoader=Borland.Data.TDBXFirebirdMetaDataCommandF' +
-        'actory,Borland.Data.DbxFirebirdDriver,Version=24.0.0.0,Culture=n' +
-        'eutral,PublicKeyToken=91d62ebb5b0d1b1b'
-      'GetDriverFunc=getSQLDriverINTERBASE'
-      'LibraryName=dbxfb.dll'
-      'LibraryNameOsx=libsqlfb.dylib'
-      'VendorLib=fbclient.dll'
-      'VendorLibWin64=fbclient.dll'
-      'VendorLibOsx=/Library/Frameworks/Firebird.framework/Firebird'
-      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
-      'User_Name=sysdba'
-      'Password=masterkey'
-      'Role=RoleName'
-      'MaxBlobSize=-1'
-      'LocaleCode=0000'
-      'IsolationLevel=ReadCommitted'
-      'SQLDialect=3'
-      'CommitRetain=False'
-      'WaitOnLocks=True'
-      'TrimChar=False'
-      'BlobSize=-1'
-      'ErrorResourceFile='
-      'RoleName=RoleName'
-      'ServerCharSet='
-      'Trim Char=False')
-    Connected = True
-    Left = 40
-    Top = 8
-  end
-  object tblFornecedores: TSQLDataSet
-    CommandText = 'FORNECEDORES'
-    CommandType = ctTable
-    DbxCommandType = 'Dbx.Table'
-    MaxBlobSize = -1
-    Params = <>
-    SQLConnection = SQLConnection1
-    Left = 40
-    Top = 80
-  end
-  object dspFornecedores: TDataSetProvider
-    DataSet = tblFornecedores
-    Left = 40
-    Top = 128
-  end
-  object cdsFornecedores: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspFornecedores'
-    Left = 40
-    Top = 176
-  end
-  object dsFornecedores: TDataSource
-    DataSet = cdsFornecedores
-    Left = 40
-    Top = 232
-  end
   object sdsFornecedores: TSimpleDataSet
     Aggregates = <>
     Connection.ConnectionName = 'FBConnection'
@@ -103,8 +31,84 @@ object dmModuloDados1: TdmModuloDados1
     BeforeDelete = sdsFornecedoresBeforeDelete
     Left = 176
     Top = 8
+    object sdsFornecedoresCODIGO_FORNECEDOR: TIntegerField
+      FieldName = 'CODIGO_FORNECEDOR'
+      Required = True
+    end
+    object sdsFornecedoresRAZAO_SOCIAL: TStringField
+      FieldName = 'RAZAO_SOCIAL'
+      Size = 50
+    end
+    object sdsFornecedoresNOME_FANTASIA: TStringField
+      FieldName = 'NOME_FANTASIA'
+      Size = 30
+    end
+    object sdsFornecedoresENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Size = 50
+    end
+    object sdsFornecedoresNUMERO: TStringField
+      FieldName = 'NUMERO'
+      FixedChar = True
+      Size = 5
+    end
+    object sdsFornecedoresCOMPLEMENTO: TStringField
+      FieldName = 'COMPLEMENTO'
+    end
+    object sdsFornecedoresBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Size = 40
+    end
+    object sdsFornecedoresCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Size = 40
+    end
+    object sdsFornecedoresESTADO: TStringField
+      FieldName = 'ESTADO'
+      FixedChar = True
+      Size = 2
+    end
+    object sdsFornecedoresCEP: TStringField
+      FieldName = 'CEP'
+      EditMask = '99.999-999;0; '
+      FixedChar = True
+      Size = 9
+    end
+    object sdsFornecedoresINSCRICAO_ESTADUAL: TStringField
+      FieldName = 'INSCRICAO_ESTADUAL'
+      Size = 15
+    end
+    object sdsFornecedoresTELEFONE: TStringField
+      FieldName = 'TELEFONE'
+      Size = 16
+    end
+    object sdsFornecedoresCONTATO_COMERCIAL: TStringField
+      FieldName = 'CONTATO_COMERCIAL'
+      Size = 50
+    end
+    object strngfldFornecedoresCNPJ: TStringField
+      FieldName = 'CNPJ'
+      EditMask = '99.999.999/9999-99;0; '
+      Size = 18
+    end
+    object strngfldFornecedoresEMAIL: TStringField
+      FieldName = 'EMAIL'
+      Size = 30
+    end
+    object strngfldFornecedoresHOME_PAGE: TStringField
+      FieldName = 'HOME_PAGE'
+      Size = 30
+    end
+    object strngfldFornecedoresFAX: TStringField
+      FieldName = 'FAX'
+      Size = 16
+    end
+    object strngfldFornecedoresFONE_COMERCIAL: TStringField
+      FieldName = 'FONE_COMERCIAL'
+      Size = 16
+    end
   end
-  object dsFornecedores2: TDataSource
+  object dsFornecedores: TDataSource
     DataSet = sdsFornecedores
     Left = 176
     Top = 56

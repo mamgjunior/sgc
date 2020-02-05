@@ -10,7 +10,8 @@ uses
   uCadFuncionarios in 'view\cadastros\uCadFuncionarios.pas' {frmCadFuncionarios},
   uCadCargos in 'view\cadastros\uCadCargos.pas' {frmCadCargos},
   uCadDepartametos in 'view\cadastros\uCadDepartametos.pas' {frmCadDepartametos},
-  uLocalizaFuncionarios in 'view\pesquisa\uLocalizaFuncionarios.pas' {frmLocalizaFuncionarios};
+  uLocalizaFuncionarios in 'view\pesquisa\uLocalizaFuncionarios.pas' {frmLocalizaFuncionarios},
+  uCadFornecedores in 'view\cadastros\uCadFornecedores.pas' {frmCadFornecedores};
 
 {$R *.res}
 
