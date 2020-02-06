@@ -10,6 +10,14 @@ inherited frmCadFornecedores: TfrmCadFornecedores
         MinHeight = 39
         Width = 688
       end>
+    inherited tlbCadastro: TToolBar
+      inherited btnAnterior: TToolButton
+        OnClick = btnAnteriorClick
+      end
+      inherited btnProximo: TToolButton
+        OnClick = btnProximoClick
+      end
+    end
   end
   inherited pgDados: TPageControl
     inherited TabSheet1: TTabSheet
@@ -73,6 +81,8 @@ inherited frmCadFornecedores: TfrmCadFornecedores
         DataField = 'RAZAO_SOCIAL'
         DataSource = dmModuloDados1.dsFornecedores
         TabOrder = 0
+        OnEnter = edtRAZAO_SOCIALEnter
+        OnExit = edtRAZAO_SOCIALExit
       end
       object edtNOME_FANTASIA: TDBEdit
         Left = 89
@@ -128,8 +138,6 @@ inherited frmCadFornecedores: TfrmCadFornecedores
     object tsEndereco: TTabSheet
       Caption = 'Endere'#231'o'
       ImageIndex = 1
-      ExplicitLeft = 5
-      ExplicitTop = 28
       object lblEndereco: TLabel
         Left = 34
         Top = 31

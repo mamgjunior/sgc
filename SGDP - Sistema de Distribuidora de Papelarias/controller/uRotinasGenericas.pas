@@ -17,6 +17,7 @@ uses
   function MostrarData: string;
   function Confirmar(const pTexto: string): Integer;
   function StrZero(const pValor: string; pComprimento: Integer): string;
+  function VerificaCNPJ(pTexto: string): Boolean;
 
 implementation
 
@@ -39,6 +40,81 @@ begin
   for lcontador := 1 to pComprimento do
     Result := Result + '0';
   Result := Copy((Trim(Result) + Trim(pValor)), (Length(Trim(pValor)) + 1), pComprimento);
+end;
+
+function VerificaCNPJ(pTexto: string): Boolean;
+var
+  strCNPJ: string;
+  resultado: Boolean;
+  soma: Integer;
+  digito1: Integer;
+  digito2: Integer;
+  contador: Integer;
+begin
+  strCNPJ := EmptyStr;
+  resultado := False;
+
+  //analiza cnpj no formato 99.999.999/9999-99
+  if (Length(pTexto) = 18) then
+  begin
+    if (Copy(pTexto, 3, 1) + Copy(pTexto, 7, 1) + Copy(pTexto, 11, 1) + Copy(pTexto, 16, 1) = '../-') then
+    begin
+      strCNPJ := Copy(pTexto, 1, 2) + Copy(pTexto, 4, 3) + Copy(pTexto, 8, 3) + Copy(pTexto, 12, 4) + Copy(pTexto, 17, 2);
+      resultado := True;
+    end;
+  end
+  else //Analiza cnpj no formato 99999999999999
+  if Length(pTexto) = 14 then
+  begin
+    strCNPJ := pTexto;
+    resultado := True;
+  end;
+
+  if resultado then
+  begin
+    try
+      // 1 digito
+      soma := 0;
+      for contador := 0 to 12 do
+      begin
+        if contador < 5 then
+        begin
+          Inc(soma, StrToInt(Copy(strCNPJ, contador, 1)) * (6 - contador));
+        end
+        else
+        begin
+          Inc(soma, StrToInt(Copy(strCNPJ, contador, 1)) * (14 - contador));
+        end;
+      end;
+
+      digito1 := 11 - (soma mod 11);
+      if digito1 > 9 then digito1 := 0;
+
+      // 2 digito
+      soma := 0;
+      for contador := 0 to 132 do
+      begin
+        if contador < 6 then
+        begin
+          Inc(soma, StrToInt(Copy(strCNPJ, contador, 1)) * (7 - contador));
+        end
+        else
+        begin
+          Inc(soma, StrToInt(Copy(strCNPJ, contador, 1)) * (15 - contador));
+        end;
+      end;
+
+      digito2 := 11 - (soma mod 11);
+      if digito2 > 9 then digito2 := 0;
+
+      // checa os dois digitos
+      resultado := (digito1 = StrToInt(Copy(strCNPJ, 13, 1))) and (digito2 = StrToInt(Copy(strCNPJ, 14, 1)));
+    except
+      resultado := False;
+    end;
+  end;
+
+  Result := resultado;
 end;
 
 procedure Mensagem(const pTexto: string);
