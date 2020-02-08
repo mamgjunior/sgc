@@ -72,10 +72,63 @@ type
     strngfldFornecedoresHOME_PAGE: TStringField;
     strngfldFornecedoresFAX: TStringField;
     strngfldFornecedoresFONE_COMERCIAL: TStringField;
+    sdsGrupos: TSimpleDataSet;
+    sdsCategorias: TSimpleDataSet;
+    sdsFamilias: TSimpleDataSet;
+    sdsMarcas: TSimpleDataSet;
+    sdsDescricao: TSimpleDataSet;
+    sdsCatalogo: TSimpleDataSet;
+    sdsFornecedorProduto: TSimpleDataSet;
+    sdsGruposCODIGO_GRUPO: TIntegerField;
+    sdsGruposDESCRICAO_GRUPO: TStringField;
+    sdsCategoriasCODIGO_CATEGORIA: TIntegerField;
+    sdsCategoriasDESCRICAO_CATEGORIA: TStringField;
+    sdsFamiliasCODIGO_FAMILIA: TIntegerField;
+    sdsFamiliasDESCRICAO_FAMILIA: TStringField;
+    sdsMarcasCODIGO_MARCA: TIntegerField;
+    sdsMarcasDESCRICAO_MARCA: TStringField;
+    sdsDescricaoCODIGO_DESCRICAO: TIntegerField;
+    sdsDescricaoDESCRICAO: TStringField;
+    sdsCatalogoCODIGO_INTERNO: TIntegerField;
+    sdsCatalogoCODIGO_BARRAS: TStringField;
+    sdsCatalogoCODIGO_DESCRICAO: TIntegerField;
+    sdsCatalogoMODELO: TStringField;
+    sdsCatalogoUNIDADE_MEDIDA: TStringField;
+    sdsCatalogoCODIGO_GRUPO: TIntegerField;
+    sdsCatalogoCODIGO_CATEGORIA: TIntegerField;
+    sdsCatalogoCODIGO_FAMILIA: TIntegerField;
+    sdsCatalogoCODIGO_MARCA: TIntegerField;
+    sdsCatalogoPRECO_CUSTO: TFMTBCDField;
+    sdsCatalogoICMS: TFMTBCDField;
+    sdsCatalogoIPI: TFMTBCDField;
+    sdsCatalogoMARGEM_LUCRO: TFMTBCDField;
+    sdsCatalogoPRECO_VENDA: TFMTBCDField;
+    sdsCatalogoCONSUMO_MEDIO: TIntegerField;
+    sdsCatalogoESTOQUE_ATUAL: TIntegerField;
+    sdsCatalogoESTOQUE_MINIMO: TIntegerField;
+    sdsFornecedorProdutoREGISTRO: TIntegerField;
+    sdsFornecedorProdutoCODIGO_FORNECEDOR: TIntegerField;
+    sdsFornecedorProdutoFORNECEDOR: TStringField;
+    sdsFornecedorProdutoCODIGO_PRODUTO: TIntegerField;
+    sdsFornecedorProdutoDESCRICAO_PRODUTO: TStringField;
+    dsGrupos: TDataSource;
+    dsCategorias: TDataSource;
+    dsFamilias: TDataSource;
+    dsMarcas: TDataSource;
+    dsDescricao: TDataSource;
+    dsCatalogo: TDataSource;
+    dsFornecedorProduto: TDataSource;
     procedure sdsDepartamentosBeforeDelete(DataSet: TDataSet);
     procedure sdsFornecedoresBeforeDelete(DataSet: TDataSet);
     procedure sdsCargosBeforeDelete(DataSet: TDataSet);
     procedure sdsFuncionariosBeforeDelete(DataSet: TDataSet);
+    procedure sdsGruposBeforeDelete(DataSet: TDataSet);
+    procedure sdsCategoriasBeforeDelete(DataSet: TDataSet);
+    procedure sdsFamiliasBeforeDelete(DataSet: TDataSet);
+    procedure sdsMarcasBeforeDelete(DataSet: TDataSet);
+    procedure sdsDescricaoBeforeDelete(DataSet: TDataSet);
+    procedure sdsCatalogoBeforeDelete(DataSet: TDataSet);
+    procedure sdsFornecedorProdutoBeforeDelete(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -100,7 +153,31 @@ begin
     Abort
 end;
 
+procedure TdmModuloDados1.sdsCatalogoBeforeDelete(DataSet: TDataSet);
+begin
+  if Confirmar('Deseja excluir esse registro?') <> IDYES then
+    Abort
+end;
+
+procedure TdmModuloDados1.sdsCategoriasBeforeDelete(DataSet: TDataSet);
+begin
+  if Confirmar('Deseja excluir esse registro?') <> IDYES then
+    Abort
+end;
+
 procedure TdmModuloDados1.sdsDepartamentosBeforeDelete(DataSet: TDataSet);
+begin
+  if Confirmar('Deseja excluir esse registro?') <> IDYES then
+    Abort
+end;
+
+procedure TdmModuloDados1.sdsDescricaoBeforeDelete(DataSet: TDataSet);
+begin
+  if Confirmar('Deseja excluir esse registro?') <> IDYES then
+    Abort
+end;
+
+procedure TdmModuloDados1.sdsFamiliasBeforeDelete(DataSet: TDataSet);
 begin
   if Confirmar('Deseja excluir esse registro?') <> IDYES then
     Abort
@@ -112,7 +189,25 @@ begin
     Abort
 end;
 
+procedure TdmModuloDados1.sdsFornecedorProdutoBeforeDelete(DataSet: TDataSet);
+begin
+  if Confirmar('Deseja excluir esse registro?') <> IDYES then
+    Abort
+end;
+
 procedure TdmModuloDados1.sdsFuncionariosBeforeDelete(DataSet: TDataSet);
+begin
+  if Confirmar('Deseja excluir esse registro?') <> IDYES then
+    Abort
+end;
+
+procedure TdmModuloDados1.sdsGruposBeforeDelete(DataSet: TDataSet);
+begin
+  if Confirmar('Deseja excluir esse registro?') <> IDYES then
+    Abort
+end;
+
+procedure TdmModuloDados1.sdsMarcasBeforeDelete(DataSet: TDataSet);
 begin
   if Confirmar('Deseja excluir esse registro?') <> IDYES then
     Abort

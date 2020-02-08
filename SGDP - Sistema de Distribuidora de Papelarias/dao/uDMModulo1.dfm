@@ -1,7 +1,7 @@
 object dmModuloDados1: TdmModuloDados1
   OldCreateOrder = False
   Height = 349
-  Width = 613
+  Width = 631
   object sdsFornecedores: TSimpleDataSet
     Aggregates = <>
     Connection.ConnectionName = 'FBConnection'
@@ -396,8 +396,8 @@ object dmModuloDados1: TdmModuloDados1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
-    Left = 160
-    Top = 232
+    Left = 16
+    Top = 40
     object sdsEstadosSIGLA_ESTADO: TStringField
       FieldName = 'SIGLA_ESTADO'
       Required = True
@@ -411,7 +411,381 @@ object dmModuloDados1: TdmModuloDados1
   end
   object dsEstados: TDataSource
     DataSet = sdsEstados
-    Left = 224
-    Top = 233
+    Left = 80
+    Top = 41
+  end
+  object sdsGrupos: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'GRUPO_PRODUTOS'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    BeforeDelete = sdsGruposBeforeDelete
+    Left = 33
+    Top = 135
+    object sdsGruposCODIGO_GRUPO: TIntegerField
+      FieldName = 'CODIGO_GRUPO'
+      Required = True
+    end
+    object sdsGruposDESCRICAO_GRUPO: TStringField
+      FieldName = 'DESCRICAO_GRUPO'
+      Size = 30
+    end
+  end
+  object sdsCategorias: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'CATEGORIA_PRODUTOS'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    BeforeDelete = sdsCategoriasBeforeDelete
+    Left = 116
+    Top = 136
+    object sdsCategoriasCODIGO_CATEGORIA: TIntegerField
+      FieldName = 'CODIGO_CATEGORIA'
+      Required = True
+    end
+    object sdsCategoriasDESCRICAO_CATEGORIA: TStringField
+      FieldName = 'DESCRICAO_CATEGORIA'
+      Size = 30
+    end
+  end
+  object sdsFamilias: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'FAMILIA_PRODUTOS'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    BeforeDelete = sdsFamiliasBeforeDelete
+    Left = 204
+    Top = 137
+    object sdsFamiliasCODIGO_FAMILIA: TIntegerField
+      FieldName = 'CODIGO_FAMILIA'
+      Required = True
+    end
+    object sdsFamiliasDESCRICAO_FAMILIA: TStringField
+      FieldName = 'DESCRICAO_FAMILIA'
+      Size = 30
+    end
+  end
+  object sdsMarcas: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'MARCA_PRODUTOS'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    BeforeDelete = sdsMarcasBeforeDelete
+    Left = 292
+    Top = 138
+    object sdsMarcasCODIGO_MARCA: TIntegerField
+      FieldName = 'CODIGO_MARCA'
+      Required = True
+    end
+    object sdsMarcasDESCRICAO_MARCA: TStringField
+      FieldName = 'DESCRICAO_MARCA'
+      Size = 30
+    end
+  end
+  object sdsDescricao: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'DESCRICAO_PRODUTOS'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    BeforeDelete = sdsDescricaoBeforeDelete
+    Left = 379
+    Top = 138
+    object sdsDescricaoCODIGO_DESCRICAO: TIntegerField
+      FieldName = 'CODIGO_DESCRICAO'
+      Required = True
+    end
+    object sdsDescricaoDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 30
+    end
+  end
+  object sdsCatalogo: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'CATALOGO_PRODUTOS'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    BeforeDelete = sdsCatalogoBeforeDelete
+    Left = 466
+    Top = 138
+    object sdsCatalogoCODIGO_INTERNO: TIntegerField
+      FieldName = 'CODIGO_INTERNO'
+      Required = True
+    end
+    object sdsCatalogoCODIGO_BARRAS: TStringField
+      FieldName = 'CODIGO_BARRAS'
+      Size = 13
+    end
+    object sdsCatalogoCODIGO_DESCRICAO: TIntegerField
+      FieldName = 'CODIGO_DESCRICAO'
+    end
+    object sdsCatalogoMODELO: TStringField
+      FieldName = 'MODELO'
+      Size = 50
+    end
+    object sdsCatalogoUNIDADE_MEDIDA: TStringField
+      FieldName = 'UNIDADE_MEDIDA'
+      FixedChar = True
+      Size = 4
+    end
+    object sdsCatalogoCODIGO_GRUPO: TIntegerField
+      FieldName = 'CODIGO_GRUPO'
+    end
+    object sdsCatalogoCODIGO_CATEGORIA: TIntegerField
+      FieldName = 'CODIGO_CATEGORIA'
+    end
+    object sdsCatalogoCODIGO_FAMILIA: TIntegerField
+      FieldName = 'CODIGO_FAMILIA'
+    end
+    object sdsCatalogoCODIGO_MARCA: TIntegerField
+      FieldName = 'CODIGO_MARCA'
+    end
+    object sdsCatalogoPRECO_CUSTO: TFMTBCDField
+      FieldName = 'PRECO_CUSTO'
+      DisplayFormat = '##,##0.00'
+      Precision = 18
+      Size = 2
+    end
+    object sdsCatalogoICMS: TFMTBCDField
+      FieldName = 'ICMS'
+      DisplayFormat = '##,##0.00'
+      Precision = 9
+      Size = 2
+    end
+    object sdsCatalogoIPI: TFMTBCDField
+      FieldName = 'IPI'
+      DisplayFormat = '##,##0.00'
+      Precision = 9
+      Size = 2
+    end
+    object sdsCatalogoMARGEM_LUCRO: TFMTBCDField
+      FieldName = 'MARGEM_LUCRO'
+      DisplayFormat = '##,##0.00'
+      Precision = 9
+      Size = 2
+    end
+    object sdsCatalogoPRECO_VENDA: TFMTBCDField
+      FieldName = 'PRECO_VENDA'
+      DisplayFormat = '##,##0.00'
+      Precision = 18
+      Size = 2
+    end
+    object sdsCatalogoCONSUMO_MEDIO: TIntegerField
+      FieldName = 'CONSUMO_MEDIO'
+    end
+    object sdsCatalogoESTOQUE_ATUAL: TIntegerField
+      FieldName = 'ESTOQUE_ATUAL'
+    end
+    object sdsCatalogoESTOQUE_MINIMO: TIntegerField
+      FieldName = 'ESTOQUE_MINIMO'
+    end
+  end
+  object sdsFornecedorProduto: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'FORNECEDOR_PRODUTO'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    BeforeDelete = sdsFornecedorProdutoBeforeDelete
+    Left = 553
+    Top = 138
+    object sdsFornecedorProdutoREGISTRO: TIntegerField
+      FieldName = 'REGISTRO'
+      Required = True
+    end
+    object sdsFornecedorProdutoCODIGO_FORNECEDOR: TIntegerField
+      FieldName = 'CODIGO_FORNECEDOR'
+    end
+    object sdsFornecedorProdutoFORNECEDOR: TStringField
+      FieldName = 'FORNECEDOR'
+      Size = 30
+    end
+    object sdsFornecedorProdutoCODIGO_PRODUTO: TIntegerField
+      FieldName = 'CODIGO_PRODUTO'
+    end
+    object sdsFornecedorProdutoDESCRICAO_PRODUTO: TStringField
+      FieldName = 'DESCRICAO_PRODUTO'
+      Size = 80
+    end
+  end
+  object dsGrupos: TDataSource
+    DataSet = sdsGrupos
+    Left = 32
+    Top = 184
+  end
+  object dsCategorias: TDataSource
+    DataSet = sdsCategorias
+    Left = 114
+    Top = 184
+  end
+  object dsFamilias: TDataSource
+    DataSet = sdsFamilias
+    Left = 202
+    Top = 185
+  end
+  object dsMarcas: TDataSource
+    DataSet = sdsMarcas
+    Left = 293
+    Top = 187
+  end
+  object dsDescricao: TDataSource
+    DataSet = sdsDescricao
+    Left = 379
+    Top = 186
+  end
+  object dsCatalogo: TDataSource
+    DataSet = sdsCatalogo
+    Left = 466
+    Top = 186
+  end
+  object dsFornecedorProduto: TDataSource
+    DataSet = sdsFornecedorProduto
+    Left = 553
+    Top = 186
   end
 end

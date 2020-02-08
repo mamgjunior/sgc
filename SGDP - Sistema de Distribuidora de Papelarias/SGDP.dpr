@@ -12,7 +12,8 @@ uses
   uCadDepartametos in 'view\cadastros\uCadDepartametos.pas' {frmCadDepartametos},
   uLocalizaFuncionarios in 'view\pesquisa\uLocalizaFuncionarios.pas' {frmLocalizaFuncionarios},
   uCadFornecedores in 'view\cadastros\uCadFornecedores.pas' {frmCadFornecedores},
-  uLocalizarFornecedor in 'view\pesquisa\uLocalizarFornecedor.pas' {frmLocalizarFornecedor};
+  uLocalizarFornecedor in 'view\pesquisa\uLocalizarFornecedor.pas' {frmLocalizarFornecedor},
+  uCadGrupoas in 'view\cadastros\uCadGrupoas.pas' {frmCadGrupoas};
 
 {$R *.res}
 
