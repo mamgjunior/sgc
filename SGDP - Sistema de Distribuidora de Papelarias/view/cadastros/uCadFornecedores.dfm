@@ -109,7 +109,7 @@ inherited frmCadFornecedores: TfrmCadFornecedores
         Top = 151
         Width = 440
         Height = 21
-        CharCase = ecUpperCase
+        CharCase = ecLowerCase
         DataField = 'HOME_PAGE'
         DataSource = dmModuloDados1.dsFornecedores
         TabOrder = 4

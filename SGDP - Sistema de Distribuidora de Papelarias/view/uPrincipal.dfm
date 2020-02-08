@@ -3098,6 +3098,10 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Funcion'#225'rios'
         OnClick = opcCadFuncionariosClick
       end
+      object opcCadFornecedores: TMenuItem
+        Caption = 'Fornecedores'
+        OnClick = opcCadFornecedoresClick
+      end
     end
   end
   object tmrPrincipal: TTimer

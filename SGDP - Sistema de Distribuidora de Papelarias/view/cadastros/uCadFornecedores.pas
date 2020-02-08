@@ -70,7 +70,7 @@ var
 implementation
 
 uses
-  uRotinasGenericas, uDMModulo1;
+  uRotinasGenericas, uDMModulo1, uLocalizarFornecedor;
 
 {$R *.dfm}
 
@@ -192,18 +192,18 @@ var
   registro: Integer;
 begin
   inherited;
-//  registro := dmModuloDados1.sdsFornecedores.RecNo;
-//  Application.CreateForm(TfrmLocalizaFornecedor, frmLocalizaFornecedor);
-//  if frmLocalizaFornecedor.ShowModal = mrOk then
-//  begin
-//    dmModuloDados1.sdsFornecedores.IndexFieldNames := 'codigo_fornecedor';
-//    dmModuloDados1.sdsFornecedores.FindKey([frmLocalizaFornecedor.strValor]);
-//    dmModuloDados1.sdsFornecedores.IndexFieldNames := EmptyStr;
-//  end
-//  else
-//    uDMModulo1.sdsFornecedores.RecNo := registro;
-//
-//  frmLocalizaFornecedor.Destroy;
+  registro := dmModuloDados1.sdsFornecedores.RecNo;
+  Application.CreateForm(TfrmLocalizarFornecedor, frmLocalizarFornecedor);
+  if frmLocalizarFornecedor.ShowModal = mrOk then
+  begin
+    dmModuloDados1.sdsFornecedores.IndexFieldNames := 'codigo_fornecedor';
+    dmModuloDados1.sdsFornecedores.FindKey([frmLocalizarFornecedor.strValor]);
+    dmModuloDados1.sdsFornecedores.IndexFieldNames := EmptyStr;
+  end
+  else
+    dmModuloDados1.sdsFornecedores.RecNo := registro;
+
+  frmLocalizarFornecedor.Destroy;
 end;
 
 procedure TfrmCadFornecedores.btnPrimeiroClick(Sender: TObject);

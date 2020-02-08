@@ -76,6 +76,7 @@ object dmModuloDados1: TdmModuloDados1
     end
     object sdsFornecedoresINSCRICAO_ESTADUAL: TStringField
       FieldName = 'INSCRICAO_ESTADUAL'
+      EditMask = '999.999.999.999;0; '
       Size = 15
     end
     object sdsFornecedoresTELEFONE: TStringField

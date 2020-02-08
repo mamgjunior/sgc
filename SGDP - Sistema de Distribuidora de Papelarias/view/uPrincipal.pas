@@ -25,6 +25,7 @@ type
     opcCadDepartamentos: TMenuItem;
     opcCadCargos: TMenuItem;
     opcCadFuncionarios: TMenuItem;
+    opcCadFornecedores: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure tmrPrincipalTimer(Sender: TObject);
     procedure opcSairClick(Sender: TObject);
@@ -32,6 +33,7 @@ type
     procedure opcCadDepartamentosClick(Sender: TObject);
     procedure opcCadCargosClick(Sender: TObject);
     procedure opcCadFuncionariosClick(Sender: TObject);
+    procedure opcCadFornecedoresClick(Sender: TObject);
   private
     procedure MostrarDicas(Sender: TObject);
   public
@@ -46,7 +48,7 @@ implementation
 {$R *.dfm}
 
 uses
-  uRotinasGenericas, uCadDepartametos, uCadCargos, uCadFuncionarios;
+  uRotinasGenericas, uCadDepartametos, uCadCargos, uCadFuncionarios, uCadFornecedores;
 
 procedure TfrmPrincipal.btnSairClick(Sender: TObject);
 begin
@@ -90,6 +92,18 @@ begin
   if (Application.FindComponent('frmCadDepartametos') = nil) then
   begin
     formulario := TfrmCadDepartametos.Create(Application);
+    formulario.Top := 0;
+    formulario.Left := 0;
+  end;
+end;
+
+procedure TfrmPrincipal.opcCadFornecedoresClick(Sender: TObject);
+var
+  formulario: TfrmCadFornecedores;
+begin
+  if (Application.FindComponent('frmCadFornecedores') = nil) then
+  begin
+    formulario := TfrmCadFornecedores.Create(Application);
     formulario.Top := 0;
     formulario.Left := 0;
   end;
