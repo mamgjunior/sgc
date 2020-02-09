@@ -13,7 +13,8 @@ uses
   uLocalizaFuncionarios in 'view\pesquisa\uLocalizaFuncionarios.pas' {frmLocalizaFuncionarios},
   uCadFornecedores in 'view\cadastros\uCadFornecedores.pas' {frmCadFornecedores},
   uLocalizarFornecedor in 'view\pesquisa\uLocalizarFornecedor.pas' {frmLocalizarFornecedor},
-  uCadGrupoas in 'view\cadastros\uCadGrupoas.pas' {frmCadGrupoas};
+  uCadGrupoas in 'view\cadastros\uCadGrupoas.pas' {frmCadGrupoas},
+  uCadCategorias in 'view\cadastros\uCadCategorias.pas' {frmCadCategorias};
 
 {$R *.res}
 
