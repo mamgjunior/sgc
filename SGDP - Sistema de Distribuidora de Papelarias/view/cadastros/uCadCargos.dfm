@@ -20,14 +20,13 @@ inherited frmCadCargos: TfrmCadCargos
     end
   end
   inherited pgDados: TPageControl
-    ActivePage = tabListaRegistros
     inherited TabSheet1: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
       ExplicitWidth = 670
       ExplicitHeight = 395
       object lblCargo: TLabel
-        Left = 8
+        Left = 6
         Top = 16
         Width = 98
         Height = 13
@@ -108,6 +107,7 @@ inherited frmCadCargos: TfrmCadCargos
             FieldName = 'VENDEDOR_EXTERNO'
             Title.Alignment = taCenter
             Title.Caption = 'Vendedor Externo'
+            Width = 64
             Visible = True
           end
           item
@@ -116,6 +116,7 @@ inherited frmCadCargos: TfrmCadCargos
             FieldName = 'VENDEDOR_INTERNO'
             Title.Alignment = taCenter
             Title.Caption = 'Vendedor Interno'
+            Width = 64
             Visible = True
           end>
       end
