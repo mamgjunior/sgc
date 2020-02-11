@@ -15,7 +15,8 @@ uses
   uLocalizarFornecedor in 'view\pesquisa\uLocalizarFornecedor.pas' {frmLocalizarFornecedor},
   uCadGrupoas in 'view\cadastros\uCadGrupoas.pas' {frmCadGrupoas},
   uCadCategorias in 'view\cadastros\uCadCategorias.pas' {frmCadCategorias},
-  uCadFamilia in 'view\cadastros\uCadFamilia.pas' {frmCadFamilia};
+  uCadFamilia in 'view\cadastros\uCadFamilia.pas' {frmCadFamilia},
+  uCadMarcas in 'view\cadastros\uCadMarcas.pas' {frmCadMarcas};
 
 {$R *.res}
 
