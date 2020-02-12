@@ -21,8 +21,8 @@ inherited frmCadMarcas: TfrmCadMarcas
   end
   inherited pgDados: TPageControl
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 5
-      ExplicitTop = 28
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 670
       ExplicitHeight = 395
       object lblMarca: TLabel

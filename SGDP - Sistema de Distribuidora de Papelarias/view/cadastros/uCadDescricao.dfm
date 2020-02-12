@@ -1,5 +1,5 @@
-inherited frmCadGrupoas: TfrmCadGrupoas
-  Caption = 'Cadastro de Grupos de Produtos'
+inherited frmCadDescricao: TfrmCadDescricao
+  Caption = 'frmCadDescricao'
   PixelsPerInch = 96
   TextHeight = 13
   inherited clbCadastro: TCoolBar
@@ -21,29 +21,29 @@ inherited frmCadGrupoas: TfrmCadGrupoas
   end
   inherited pgDados: TPageControl
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
+      ExplicitLeft = 5
+      ExplicitTop = 28
       ExplicitWidth = 670
       ExplicitHeight = 395
-      object lblGrupo: TLabel
-        Left = 14
+      object lblDescricao: TLabel
+        Left = 13
         Top = 24
-        Width = 97
+        Width = 122
         Height = 13
-        Caption = 'Descri'#231#227'o do Grupo:'
+        Caption = 'Descri'#231#227'o/Nome Produto:'
       end
-      object edtGrupo: TDBEdit
-        Left = 119
+      object edtDescricao: TDBEdit
+        Left = 141
         Top = 21
         Width = 497
         Height = 21
         CharCase = ecUpperCase
-        DataField = 'DESCRICAO_GRUPO'
-        DataSource = dmModuloDados1.dsGrupos
+        DataField = 'DESCRICAO'
+        DataSource = dmModuloDados1.dsDescricao
         TabOrder = 0
       end
     end
-    object tabListaRegistros: TTabSheet
+    object tsListaRegistro: TTabSheet
       Caption = 'Lista de Registros'
       ImageIndex = 1
       object grdDados: TDBGrid
@@ -51,19 +51,17 @@ inherited frmCadGrupoas: TfrmCadGrupoas
         Top = 24
         Width = 633
         Height = 345
-        DataSource = dmModuloDados1.dsGrupos
+        DataSource = dmModuloDados1.dsDescricao
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
-        OnDblClick = grdDadosDblClick
-        OnKeyDown = grdDadosKeyDown
         Columns = <
           item
             Expanded = False
-            FieldName = 'CODIGO_GRUPO'
+            FieldName = 'CODIGO_DESCRICAO'
             ReadOnly = True
             Title.Alignment = taCenter
             Title.Caption = 'C'#243'digo'
@@ -72,10 +70,10 @@ inherited frmCadGrupoas: TfrmCadGrupoas
           end
           item
             Expanded = False
-            FieldName = 'DESCRICAO_GRUPO'
+            FieldName = 'DESCRICAO'
             ReadOnly = True
             Title.Alignment = taCenter
-            Title.Caption = 'Descri'#231#227'o do Grupo'
+            Title.Caption = 'Descri'#231#227'o / Nome do Produto'
             Width = 400
             Visible = True
           end>

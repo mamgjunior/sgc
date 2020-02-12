@@ -16,7 +16,10 @@ uses
   uCadGrupoas in 'view\cadastros\uCadGrupoas.pas' {frmCadGrupoas},
   uCadCategorias in 'view\cadastros\uCadCategorias.pas' {frmCadCategorias},
   uCadFamilia in 'view\cadastros\uCadFamilia.pas' {frmCadFamilia},
-  uCadMarcas in 'view\cadastros\uCadMarcas.pas' {frmCadMarcas};
+  uCadMarcas in 'view\cadastros\uCadMarcas.pas' {frmCadMarcas},
+  uLocalizaMarca in 'view\pesquisa\uLocalizaMarca.pas' {frmLocalizaMarca},
+  uCadDescricao in 'view\cadastros\uCadDescricao.pas' {frmCadDescricao},
+  uLocalizaDescricao in 'view\pesquisa\uLocalizaDescricao.pas' {frmLocalizaDescricao};
 
 {$R *.res}
 

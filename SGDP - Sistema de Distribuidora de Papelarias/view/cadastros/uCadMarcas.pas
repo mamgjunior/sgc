@@ -24,6 +24,7 @@ type
     procedure btnDesfazerClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
+    procedure btnLocalizarClick(Sender: TObject);
   private
     procedure MoveFoco;
   public
@@ -36,7 +37,7 @@ var
 implementation
 
 uses
-  uDMModulo1, uRotinasGenericas;
+  uDMModulo1, uRotinasGenericas, uLocalizaMarca;
 
 {$R *.dfm}
 
@@ -149,6 +150,24 @@ begin
 
     BloquearCampos(True);
     MoveFoco;
+end;
+
+procedure TfrmCadMarcas.btnLocalizarClick(Sender: TObject);
+var
+  registro: Integer;
+begin
+  inherited;
+    registro := dmModuloDados1.sdsMarcas.RecNo;
+    Application.CreateForm(TfrmLocalizaMarca, frmLocalizaMarca);
+    if frmLocalizaMarca.ShowModal = mrOk then
+    begin
+      dmModuloDados1.sdsMarcas.IndexFieldNames := 'Codigo_Marca';
+      dmModuloDados1.sdsMarcas.FindKey([frmLocalizaMarca.strValor]);
+      dmModuloDados1.sdsMarcas.IndexFieldNames := EmptyStr;
+    end
+    else
+      dmModuloDados1.sdsMarcas.RecNo := registro;
+    frmLocalizaMarca.Destroy;
 end;
 
 procedure TfrmCadMarcas.btnPrimeiroClick(Sender: TObject);
