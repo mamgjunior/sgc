@@ -21,8 +21,8 @@ inherited frmCadProdutos: TfrmCadProdutos
   end
   inherited pgDados: TPageControl
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 5
-      ExplicitTop = 28
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 670
       ExplicitHeight = 395
       object lblCodigoBarras: TLabel
@@ -141,7 +141,7 @@ inherited frmCadProdutos: TfrmCadProdutos
         Left = 16
         Top = 44
         Width = 193
-        Height = 22
+        Height = 21
         DataField = 'CODIGO_BARRAS'
         DataSource = dmModuloDados1.dsCatalogo
         TabOrder = 0
@@ -161,7 +161,7 @@ inherited frmCadProdutos: TfrmCadProdutos
         Left = 536
         Top = 91
         Width = 121
-        Height = 22
+        Height = 21
         DataField = 'UNIDADE_MEDIDA'
         DataSource = dmModuloDados1.dsCatalogo
         TabOrder = 2
@@ -179,7 +179,7 @@ inherited frmCadProdutos: TfrmCadProdutos
         Left = 192
         Top = 236
         Width = 121
-        Height = 22
+        Height = 21
         DataField = 'MARGEM_LUCRO'
         DataSource = dmModuloDados1.dsCatalogo
         TabOrder = 4
@@ -197,7 +197,7 @@ inherited frmCadProdutos: TfrmCadProdutos
         Left = 536
         Top = 236
         Width = 121
-        Height = 22
+        Height = 21
         DataField = 'ICMS'
         DataSource = dmModuloDados1.dsCatalogo
         TabOrder = 6
@@ -224,7 +224,7 @@ inherited frmCadProdutos: TfrmCadProdutos
         Left = 363
         Top = 285
         Width = 121
-        Height = 22
+        Height = 21
         DataField = 'ESTOQUE_MINIMO'
         DataSource = dmModuloDados1.dsCatalogo
         TabOrder = 9

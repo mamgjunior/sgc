@@ -26,6 +26,13 @@ type
     opcCadCargos: TMenuItem;
     opcCadFuncionarios: TMenuItem;
     opcCadFornecedores: TMenuItem;
+    opcProdutos: TMenuItem;
+    opcGrupos: TMenuItem;
+    opcCategorias: TMenuItem;
+    opcFamilias: TMenuItem;
+    opcMarcas: TMenuItem;
+    opcDescricao: TMenuItem;
+    opcCatalogo: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure tmrPrincipalTimer(Sender: TObject);
     procedure opcSairClick(Sender: TObject);
@@ -34,6 +41,12 @@ type
     procedure opcCadCargosClick(Sender: TObject);
     procedure opcCadFuncionariosClick(Sender: TObject);
     procedure opcCadFornecedoresClick(Sender: TObject);
+    procedure opcGruposClick(Sender: TObject);
+    procedure opcCategoriasClick(Sender: TObject);
+    procedure opcFamiliasClick(Sender: TObject);
+    procedure opcDescricaoClick(Sender: TObject);
+    procedure opcCatalogoClick(Sender: TObject);
+    procedure opcMarcasClick(Sender: TObject);
   private
     procedure MostrarDicas(Sender: TObject);
   public
@@ -48,7 +61,7 @@ implementation
 {$R *.dfm}
 
 uses
-  uRotinasGenericas, uCadDepartametos, uCadCargos, uCadFuncionarios, uCadFornecedores;
+  uRotinasGenericas, uCadDepartametos, uCadCargos, uCadFuncionarios, uCadFornecedores, uCadGrupoas, uCadCategorias, uCadProdutos, uCadDescricao, uCadFamilia, uCadMarcas;
 
 procedure TfrmPrincipal.btnSairClick(Sender: TObject);
 begin
@@ -116,6 +129,78 @@ begin
   if (Application.FindComponent('frmCadFuncionarios') = nil) then
   begin
     formulario := TfrmCadFuncionarios.Create(Application);
+    formulario.Top := 0;
+    formulario.Left := 0;
+  end;
+end;
+
+procedure TfrmPrincipal.opcCatalogoClick(Sender: TObject);
+var
+  formulario: TfrmCadProdutos;
+begin
+  if (Application.FindComponent('frmCadProdutos') = nil) then
+  begin
+    formulario := TfrmCadProdutos.Create(Application);
+    formulario.Top := 0;
+    formulario.Left := 0;
+  end;
+end;
+
+procedure TfrmPrincipal.opcCategoriasClick(Sender: TObject);
+var
+  formulario: TfrmCadCategorias;
+begin
+  if (Application.FindComponent('frmCadCategorias') = nil) then
+  begin
+    formulario := TfrmCadCategorias.Create(Application);
+    formulario.Top := 0;
+    formulario.Left := 0;
+  end;
+end;
+
+procedure TfrmPrincipal.opcDescricaoClick(Sender: TObject);
+var
+  formulario: TfrmCadDescricao;
+begin
+  if (Application.FindComponent('frmCadDescricao') = nil) then
+  begin
+    formulario := TfrmCadDescricao.Create(Application);
+    formulario.Top := 0;
+    formulario.Left := 0;
+  end;
+end;
+
+procedure TfrmPrincipal.opcFamiliasClick(Sender: TObject);
+var
+  formulario: TfrmCadFamilia;
+begin
+  if (Application.FindComponent('frmCadFamilia') = nil) then
+  begin
+    formulario := TfrmCadFamilia.Create(Application);
+    formulario.Top := 0;
+    formulario.Left := 0;
+  end;
+end;
+
+procedure TfrmPrincipal.opcGruposClick(Sender: TObject);
+var
+  formulario: TfrmCadGrupoas;
+begin
+  if (Application.FindComponent('frmCadGrupoas') = nil) then
+  begin
+    formulario := TfrmCadGrupoas.Create(Application);
+    formulario.Top := 0;
+    formulario.Left := 0;
+  end;
+end;
+
+procedure TfrmPrincipal.opcMarcasClick(Sender: TObject);
+var
+  formulario: TfrmCadMarcas;
+begin
+  if (Application.FindComponent('frmCadMarcas') = nil) then
+  begin
+    formulario := TfrmCadMarcas.Create(Application);
     formulario.Top := 0;
     formulario.Left := 0;
   end;

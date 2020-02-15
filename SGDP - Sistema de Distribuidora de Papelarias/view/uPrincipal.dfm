@@ -3102,6 +3102,33 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Fornecedores'
         OnClick = opcCadFornecedoresClick
       end
+      object opcProdutos: TMenuItem
+        Caption = 'Produtos'
+        object opcGrupos: TMenuItem
+          Caption = 'Grupo de Produtos'
+          OnClick = opcGruposClick
+        end
+        object opcCategorias: TMenuItem
+          Caption = 'Categorias de Produtos'
+          OnClick = opcCategoriasClick
+        end
+        object opcFamilias: TMenuItem
+          Caption = 'Fam'#237'lias de Produtos'
+          OnClick = opcFamiliasClick
+        end
+        object opcMarcas: TMenuItem
+          Caption = 'Marcas de Produtos'
+          OnClick = opcMarcasClick
+        end
+        object opcDescricao: TMenuItem
+          Caption = 'Descri'#231#245'es de Produtos'
+          OnClick = opcDescricaoClick
+        end
+        object opcCatalogo: TMenuItem
+          Caption = 'C'#225'talogo de Produtos'
+          OnClick = opcCatalogoClick
+        end
+      end
     end
   end
   object tmrPrincipal: TTimer

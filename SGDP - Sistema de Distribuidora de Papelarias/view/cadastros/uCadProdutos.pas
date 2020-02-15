@@ -67,7 +67,7 @@ var
 implementation
 
 uses
-  uDMModulo1, uRotinasGenericas;
+  uDMModulo1, uRotinasGenericas, uLocalizaProduto;
 
 {$R *.dfm}
 
@@ -187,17 +187,17 @@ var
   registro: Integer;
 begin
   inherited;
-//  registro := dmModuloDados1.sdsCatalogo.RecNo;
-//  Application.CreateForm(TfrmLocalizaProduto, frmLocalizaProduto);
-//  if frmLocalizaProduto.ShowModal = mrOk then
-//  begin
-//    dmModuloDados1.sdsCatalogo.IndexFieldNames := 'Codigo_Interno';
-//    dmModuloDados1.sdsCatalogo.FindKey([frmLocalizaProduto.strValor]);
-//    dmModuloDados1.sdsCatalogo.IndexFieldNames := EmptyStr;
-//  end
-//  else
-//    dmModuloDados1.sdsCatalogo.RecNo := registro;
-//  frmLocalizaProduto.Destroy;
+  registro := dmModuloDados1.sdsCatalogo.RecNo;
+  Application.CreateForm(TfrmLocalizaProduto, frmLocalizaProduto);
+  if frmLocalizaProduto.ShowModal = mrOk then
+  begin
+    dmModuloDados1.sdsCatalogo.IndexFieldNames := 'Codigo_Interno';
+    dmModuloDados1.sdsCatalogo.FindKey([frmLocalizaProduto.strValor]);
+    dmModuloDados1.sdsCatalogo.IndexFieldNames := EmptyStr;
+  end
+  else
+    dmModuloDados1.sdsCatalogo.RecNo := registro;
+  frmLocalizaProduto.Destroy;
 end;
 
 procedure TfrmCadProdutos.btnPrimeiroClick(Sender: TObject);

@@ -20,7 +20,8 @@ uses
   uLocalizaMarca in 'view\pesquisa\uLocalizaMarca.pas' {frmLocalizaMarca},
   uCadDescricao in 'view\cadastros\uCadDescricao.pas' {frmCadDescricao},
   uLocalizaDescricao in 'view\pesquisa\uLocalizaDescricao.pas' {frmLocalizaDescricao},
-  uCadProdutos in 'view\cadastros\uCadProdutos.pas' {frmCadProdutos};
+  uCadProdutos in 'view\cadastros\uCadProdutos.pas' {frmCadProdutos},
+  uLocalizaProduto in 'view\pesquisa\uLocalizaProduto.pas' {frmLocalizaProduto};
 
 {$R *.res}
 

@@ -21,8 +21,8 @@ inherited frmCadDescricao: TfrmCadDescricao
   end
   inherited pgDados: TPageControl
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 5
-      ExplicitTop = 28
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 670
       ExplicitHeight = 395
       object lblDescricao: TLabel
@@ -46,6 +46,10 @@ inherited frmCadDescricao: TfrmCadDescricao
     object tsListaRegistro: TTabSheet
       Caption = 'Lista de Registros'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdDados: TDBGrid
         Left = 16
         Top = 24

@@ -23,6 +23,7 @@ type
     procedure btnGravarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
     procedure btnLocalizarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     procedure MoveFoco;
   public
@@ -196,6 +197,34 @@ begin
   inherited;
   dmModuloDados1.sdsDescricao.Last;
   MoveFoco;
+end;
+
+procedure TfrmCadDescricao.FormShow(Sender: TObject);
+begin
+  inherited;
+      dmModuloDados1.sdsControle.Open;
+    dmModuloDados1.sdsDescricao.Open;
+
+    if dmModuloDados1.sdsDescricao.IsEmpty then
+    begin
+      BloquearCampos(False);
+
+      btnAdicionar.Enabled := False;
+      btnEditar.Enabled := False;
+      btnExcluir.Enabled := False;
+      btnGravar.Enabled := True;
+
+      chrModo := 'I';
+
+      dmModuloDados1.sdsControle.Edit;
+      dmModuloDados1.sdsControleCODIGO_DESCRICAO.AsInteger := 0;
+      dmModuloDados1.sdsControle.Post;
+      dmModuloDados1.sdsDescricao.Append;
+    end
+    else
+      chrModo := EmptyStr;
+
+    MoveFoco;
 end;
 
 procedure TfrmCadDescricao.MoveFoco;
