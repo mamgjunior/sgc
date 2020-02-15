@@ -788,4 +788,122 @@ object dmModuloDados1: TdmModuloDados1
     Left = 553
     Top = 186
   end
+  object sdsProdutos: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'SELECT * FROM CATALOGO_PRODUTOS'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    Left = 40
+    Top = 264
+    object sdsProdutosCODIGO_INTERNO: TIntegerField
+      DisplayLabel = 'C'#243'digo Interno'
+      FieldName = 'CODIGO_INTERNO'
+      Required = True
+    end
+    object sdsProdutosCODIGO_BARRAS: TStringField
+      DisplayLabel = 'C'#243'digo de Barras'
+      FieldName = 'CODIGO_BARRAS'
+      Size = 13
+    end
+    object sdsProdutosCODIGO_DESCRICAO: TIntegerField
+      DisplayLabel = 'C'#243'digo da Descri'#231#227'o'
+      FieldName = 'CODIGO_DESCRICAO'
+    end
+    object sdsProdutosMODELO: TStringField
+      FieldName = 'MODELO'
+      Size = 50
+    end
+    object sdsProdutosUNIDADE_MEDIDA: TStringField
+      DisplayLabel = 'U.M.'
+      FieldName = 'UNIDADE_MEDIDA'
+      FixedChar = True
+      Size = 4
+    end
+    object sdsProdutosCODIGO_GRUPO: TIntegerField
+      DisplayLabel = 'Grupo'
+      FieldName = 'CODIGO_GRUPO'
+    end
+    object sdsProdutosCODIGO_CATEGORIA: TIntegerField
+      DisplayLabel = 'Categoria'
+      FieldName = 'CODIGO_CATEGORIA'
+    end
+    object sdsProdutosCODIGO_FAMILIA: TIntegerField
+      DisplayLabel = 'Fam'#237'lia'
+      FieldName = 'CODIGO_FAMILIA'
+    end
+    object sdsProdutosCODIGO_MARCA: TIntegerField
+      DisplayLabel = 'Marca'
+      FieldName = 'CODIGO_MARCA'
+    end
+    object sdsProdutosPRECO_CUSTO: TFMTBCDField
+      DisplayLabel = 'Pre'#231'o de Custo'
+      FieldName = 'PRECO_CUSTO'
+      DisplayFormat = '##,##0.00'
+      Precision = 18
+      Size = 2
+    end
+    object sdsProdutosICMS: TFMTBCDField
+      FieldName = 'ICMS'
+      DisplayFormat = '##,##0.00'
+      Precision = 9
+      Size = 2
+    end
+    object sdsProdutosIPI: TFMTBCDField
+      FieldName = 'IPI'
+      DisplayFormat = '##,##0.00'
+      Precision = 9
+      Size = 2
+    end
+    object sdsProdutosMARGEM_LUCRO: TFMTBCDField
+      DisplayLabel = 'Margem de Lucro'
+      FieldName = 'MARGEM_LUCRO'
+      DisplayFormat = '##,##0.00'
+      Precision = 9
+      Size = 2
+    end
+    object sdsProdutosPRECO_VENDA: TFMTBCDField
+      DisplayLabel = 'Pre'#231'o de Venda'
+      FieldName = 'PRECO_VENDA'
+      DisplayFormat = '##,##0.00'
+      Precision = 18
+      Size = 2
+    end
+    object sdsProdutosCONSUMO_MEDIO: TIntegerField
+      DisplayLabel = 'Consumo M'#233'dio'
+      FieldName = 'CONSUMO_MEDIO'
+    end
+    object sdsProdutosESTOQUE_ATUAL: TIntegerField
+      DisplayLabel = 'Estoque Atual'
+      FieldName = 'ESTOQUE_ATUAL'
+    end
+    object sdsProdutosESTOQUE_MINIMO: TIntegerField
+      DisplayLabel = 'Estoque M'#237'nimo'
+      FieldName = 'ESTOQUE_MINIMO'
+    end
+  end
+  object dsProdutos: TDataSource
+    DataSet = sdsProdutos
+    Left = 103
+    Top = 264
+  end
 end

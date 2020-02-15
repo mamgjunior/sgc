@@ -19,7 +19,8 @@ uses
   uCadMarcas in 'view\cadastros\uCadMarcas.pas' {frmCadMarcas},
   uLocalizaMarca in 'view\pesquisa\uLocalizaMarca.pas' {frmLocalizaMarca},
   uCadDescricao in 'view\cadastros\uCadDescricao.pas' {frmCadDescricao},
-  uLocalizaDescricao in 'view\pesquisa\uLocalizaDescricao.pas' {frmLocalizaDescricao};
+  uLocalizaDescricao in 'view\pesquisa\uLocalizaDescricao.pas' {frmLocalizaDescricao},
+  uCadProdutos in 'view\cadastros\uCadProdutos.pas' {frmCadProdutos};
 
 {$R *.res}
 
