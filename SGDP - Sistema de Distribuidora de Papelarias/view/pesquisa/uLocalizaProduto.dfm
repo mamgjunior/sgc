@@ -1,5 +1,5 @@
 inherited frmLocalizaProduto: TfrmLocalizaProduto
-  Caption = 'frmLocalizaProduto'
+  Caption = 'Localizar Produtos'
   PixelsPerInch = 96
   TextHeight = 16
   inherited lblPesquisar: TLabel

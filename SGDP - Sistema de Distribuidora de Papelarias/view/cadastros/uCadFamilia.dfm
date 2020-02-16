@@ -1,5 +1,5 @@
 inherited frmCadFamilia: TfrmCadFamilia
-  Caption = 'frmCadFamilia'
+  Caption = 'Cadastro de Fam'#237'lia de Produtos'
   PixelsPerInch = 96
   TextHeight = 13
   inherited clbCadastro: TCoolBar
@@ -21,8 +21,8 @@ inherited frmCadFamilia: TfrmCadFamilia
   end
   inherited pgDados: TPageControl
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 5
-      ExplicitTop = 28
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 670
       ExplicitHeight = 395
       object lblFamilia: TLabel
@@ -48,6 +48,8 @@ inherited frmCadFamilia: TfrmCadFamilia
       ImageIndex = 1
       ExplicitLeft = 5
       ExplicitTop = 28
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdDados: TDBGrid
         Left = 16
         Top = 24

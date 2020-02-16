@@ -1,5 +1,5 @@
 inherited frmLocalizaDescricao: TfrmLocalizaDescricao
-  Caption = 'frmLocalizaDescricao'
+  Caption = 'Localizar Descri'#231#227'o'
   ClientWidth = 635
   OnShow = FormShow
   ExplicitWidth = 641

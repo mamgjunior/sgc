@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   uMestreCadastro, System.ImageList, Vcl.ImgList, Vcl.ComCtrls, Vcl.ToolWin,
-  Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Mask, Data.DB;
+  Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Mask, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.Buttons;
 
 type
   TfrmCadProdutos = class(TfrmMestreCadastro)
@@ -42,6 +43,10 @@ type
     lblEstoqueAtual: TLabel;
     lblEstoqueMinimo: TLabel;
     lblCustoMedio: TLabel;
+    tsFornecedores: TTabSheet;
+    btnNovoFornecedor: TSpeedButton;
+    grdFornecedores: TDBGrid;
+    btnExcluirFornecedor: TSpeedButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure btnAdicionarClick(Sender: TObject);
@@ -55,8 +60,12 @@ type
     procedure btnLocalizarClick(Sender: TObject);
     procedure edtCodigoBarrasEnter(Sender: TObject);
     procedure edtCodigoBarrasExit(Sender: TObject);
+    procedure btnExcluirFornecedorClick(Sender: TObject);
+    procedure btnNovoFornecedorClick(Sender: TObject);
   private
     procedure MoveFoco;
+    procedure ExcluirFornecedor;
+    procedure AdicionarFornecedor;
   public
     { Public declarations }
   end;
@@ -67,11 +76,38 @@ var
 implementation
 
 uses
-  uDMModulo1, uRotinasGenericas, uLocalizaProduto;
+  uDMModulo1, uRotinasGenericas, uLocalizaProduto, uLocalizarFornecedor;
 
 {$R *.dfm}
 
 { TfrmCadProdutos }
+
+procedure TfrmCadProdutos.AdicionarFornecedor;
+var
+  produto: string;
+begin
+  Application.CreateForm(TfrmLocalizarFornecedor, frmLocalizarFornecedor);
+  if (frmLocalizarFornecedor.ShowModal = mrOk) then
+  begin
+    dmModuloDados1.sdsDescricao.Locate('codigo_descricao', VarArrayOf([dmModuloDados1.sdsCatalogoCODIGO_DESCRICAO.AsInteger]), []);
+    produto := Trim(dmModuloDados1.sdsDescricaoDESCRICAO.AsString) + Trim(dmModuloDados1.sdsCatalogoMODELO.AsString);
+
+    dmModuloDados1.sdsControle.Edit;
+    dmModuloDados1.sdsControleREGISTRO_FORNECEDOR.AsInteger := dmModuloDados1.sdsControleREGISTRO_FORNECEDOR.AsInteger + 1;
+    dmModuloDados1.sdsControle.Post;
+    dmModuloDados1.sdsControle.ApplyUpdates(-1);
+
+    dmModuloDados1.sdsFornecedorProduto.Append;
+    dmModuloDados1.sdsFornecedorProdutoREGISTRO.AsInteger := dmModuloDados1.sdsControleREGISTRO_FORNECEDOR.AsInteger;
+    dmModuloDados1.sdsFornecedorProdutoCODIGO_FORNECEDOR.AsInteger := dmModuloDados1.sdsFornecedoresCODIGO_FORNECEDOR.AsInteger;
+    dmModuloDados1.sdsFornecedorProdutoFORNECEDOR.AsString := dmModuloDados1.sdsFornecedoresNOME_FANTASIA.AsString;
+    dmModuloDados1.sdsFornecedorProdutoCODIGO_PRODUTO.AsInteger := dmModuloDados1.sdsCatalogoCODIGO_INTERNO.AsInteger;
+    dmModuloDados1.sdsFornecedorProdutoDESCRICAO_PRODUTO.AsString := produto;
+    dmModuloDados1.sdsFornecedorProduto.Post;
+    dmModuloDados1.sdsFornecedorProduto.ApplyUpdates(-1);
+  end;
+  frmLocalizarFornecedor.Destroy;
+end;
 
 procedure TfrmCadProdutos.btnAdicionarClick(Sender: TObject);
 begin
@@ -153,6 +189,12 @@ begin
   inherited;
 end;
 
+procedure TfrmCadProdutos.btnExcluirFornecedorClick(Sender: TObject);
+begin
+  inherited;
+  ExcluirFornecedor;
+end;
+
 procedure TfrmCadProdutos.btnGravarClick(Sender: TObject);
 begin
   inherited;
@@ -198,6 +240,12 @@ begin
   else
     dmModuloDados1.sdsCatalogo.RecNo := registro;
   frmLocalizaProduto.Destroy;
+end;
+
+procedure TfrmCadProdutos.btnNovoFornecedorClick(Sender: TObject);
+begin
+  inherited;
+  AdicionarFornecedor;
 end;
 
 procedure TfrmCadProdutos.btnPrimeiroClick(Sender: TObject);
@@ -272,6 +320,12 @@ begin
   end;
 end;
 
+procedure TfrmCadProdutos.ExcluirFornecedor;
+begin
+  dmModuloDados1.sdsFornecedorProduto.Delete;
+  dmModuloDados1.sdsFornecedorProduto.ApplyUpdates(-1);
+end;
+
 procedure TfrmCadProdutos.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   dmModuloDados1.sdsGrupos.IndexFieldNames := EmptyStr;
@@ -280,6 +334,10 @@ begin
   dmModuloDados1.sdsMarcas.IndexFieldNames := EmptyStr;
   dmModuloDados1.sdsDescricao.IndexFieldNames := EmptyStr;
 
+  dmModuloDados1.sdsFornecedorProduto.MasterFields := EmptyStr;
+  dmModuloDados1.sdsFornecedorProduto.MasterSource := nil;
+  dmModuloDados1.sdsFornecedorProduto.IndexFieldNames := EmptyStr;
+
   dmModuloDados1.sdsControle.Close;
   dmModuloDados1.sdsGrupos.Close;
   dmModuloDados1.sdsCategorias.Close;
@@ -287,6 +345,8 @@ begin
   dmModuloDados1.sdsMarcas.Close;
   dmModuloDados1.sdsDescricao.Close;
   dmModuloDados1.sdsCatalogo.Close;
+  dmModuloDados1.sdsFornecedores.Close;
+  dmModuloDados1.sdsFornecedorProduto.Close;
 
   inherited;
 end;
@@ -301,12 +361,18 @@ begin
   dmModuloDados1.sdsMarcas.Open;
   dmModuloDados1.sdsDescricao.Open;
   dmModuloDados1.sdsCatalogo.Open;
+  dmModuloDados1.sdsFornecedores.Open;
+  dmModuloDados1.sdsFornecedorProduto.Open;
 
   dmModuloDados1.sdsGrupos.IndexFieldNames := 'Descricao_Grupo';
   dmModuloDados1.sdsCategorias.IndexFieldNames := 'Descricao_Categoria';
   dmModuloDados1.sdsFamilias.IndexFieldNames := 'Descricao_Familia';
   dmModuloDados1.sdsMarcas.IndexFieldNames := 'Descricao_Marca';
   dmModuloDados1.sdsDescricao.IndexFieldNames := 'Descricao';
+
+  dmModuloDados1.sdsFornecedorProduto.IndexFieldNames := 'Codigo_Produto';
+  dmModuloDados1.sdsFornecedorProduto.MasterSource := dmModuloDados1.dsCatalogo;
+  dmModuloDados1.sdsFornecedorProduto.MasterFields := 'Codigo_Interno';
 
   if dmModuloDados1.sdsCatalogo.IsEmpty then
   begin

@@ -1,5 +1,5 @@
 inherited frmCadDescricao: TfrmCadDescricao
-  Caption = 'frmCadDescricao'
+  Caption = 'Cadastro de Descri'#231#227'o de Produtos'
   PixelsPerInch = 96
   TextHeight = 13
   inherited clbCadastro: TCoolBar
