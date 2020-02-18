@@ -906,4 +906,145 @@ object dmModuloDados1: TdmModuloDados1
     Left = 103
     Top = 264
   end
+  object sdsClientes: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'CLIENTES_JURIDICO'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    Left = 177
+    Top = 263
+    object sdsClientesCODIGO_CLIENTE: TIntegerField
+      DisplayLabel = 'C'#243'digo do Cliente'
+      FieldName = 'CODIGO_CLIENTE'
+      Required = True
+    end
+    object sdsClientesNOME_CLIENTE: TStringField
+      DisplayLabel = 'Nome do Cliente'
+      FieldName = 'NOME_CLIENTE'
+      Size = 50
+    end
+    object sdsClientesCNPJ: TStringField
+      FieldName = 'CNPJ'
+      EditMask = '99.999.999/9999-99'
+      Size = 18
+    end
+    object sdsClientesINSCRICAO_ESTADUAL: TStringField
+      DisplayLabel = 'Inscri'#231#227'o Estadual'
+      FieldName = 'INSCRICAO_ESTADUAL'
+      EditMask = '999.999.999.999'
+      Size = 15
+    end
+    object sdsClientesENDERECO: TStringField
+      DisplayLabel = 'Endere'#231'o'
+      FieldName = 'ENDERECO'
+      Size = 50
+    end
+    object sdsClientesNUMERO: TStringField
+      DisplayLabel = 'N'#250'mero'
+      FieldName = 'NUMERO'
+      FixedChar = True
+      Size = 5
+    end
+    object sdsClientesCOMPLEMENTO: TStringField
+      DisplayLabel = 'Complemento'
+      FieldName = 'COMPLEMENTO'
+    end
+    object sdsClientesBAIRRO: TStringField
+      DisplayLabel = 'Bairro'
+      FieldName = 'BAIRRO'
+      Size = 40
+    end
+    object sdsClientesCIDADE: TStringField
+      DisplayLabel = 'Cidade'
+      FieldName = 'CIDADE'
+      Size = 40
+    end
+    object sdsClientesESTADO: TStringField
+      DisplayLabel = 'Estado'
+      FieldName = 'ESTADO'
+      FixedChar = True
+      Size = 2
+    end
+    object sdsClientesCEP: TStringField
+      FieldName = 'CEP'
+      EditMask = '99.999-999'
+      FixedChar = True
+      Size = 9
+    end
+    object sdsClientesTELEFONE: TStringField
+      DisplayLabel = 'Telefone'
+      FieldName = 'TELEFONE'
+      Size = 16
+    end
+    object sdsClientesFAX: TStringField
+      DisplayLabel = 'Fax'
+      FieldName = 'FAX'
+      Size = 16
+    end
+    object sdsClientesEMAIL: TStringField
+      DisplayLabel = 'E-Mail'
+      FieldName = 'EMAIL'
+      Size = 80
+    end
+    object sdsClientesTELEFONE_CONTATO: TStringField
+      DisplayLabel = 'Telefone de Contato'
+      FieldName = 'TELEFONE_CONTATO'
+      Size = 16
+    end
+    object sdsClientesCONTATO: TStringField
+      DisplayLabel = 'Contato'
+      FieldName = 'CONTATO'
+      Size = 50
+    end
+    object sdsClientesDATA_CADASTRO: TDateField
+      DisplayLabel = 'Data do Cadastro'
+      FieldName = 'DATA_CADASTRO'
+    end
+    object sdsClientesLIMITE_CREDITO: TFMTBCDField
+      DisplayLabel = 'Limite de Cr'#233'dito'
+      FieldName = 'LIMITE_CREDITO'
+      DisplayFormat = '##,##0.00'
+      Precision = 18
+      Size = 2
+    end
+    object sdsClientesVALOR_ABERTO: TFMTBCDField
+      DisplayLabel = 'D'#233'bito em Aberto'
+      FieldName = 'VALOR_ABERTO'
+      DisplayFormat = '##,##0.00'
+      Precision = 18
+      Size = 2
+    end
+    object sdsClientesTIPO_COBRANCA: TStringField
+      DisplayLabel = 'Tipo de Cobran'#231'a'
+      FieldName = 'TIPO_COBRANCA'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object dsClientes: TDataSource
+    DataSet = sdsClientes
+    Left = 232
+    Top = 263
+  end
 end

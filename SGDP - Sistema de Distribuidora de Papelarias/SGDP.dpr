@@ -21,7 +21,8 @@ uses
   uCadDescricao in 'view\cadastros\uCadDescricao.pas' {frmCadDescricao},
   uLocalizaDescricao in 'view\pesquisa\uLocalizaDescricao.pas' {frmLocalizaDescricao},
   uCadProdutos in 'view\cadastros\uCadProdutos.pas' {frmCadProdutos},
-  uLocalizaProduto in 'view\pesquisa\uLocalizaProduto.pas' {frmLocalizaProduto};
+  uLocalizaProduto in 'view\pesquisa\uLocalizaProduto.pas' {frmLocalizaProduto},
+  uCadClientes_Juridico in 'view\cadastros\uCadClientes_Juridico.pas' {frmCadClientes_Juridico};
 
 {$R *.res}
 
