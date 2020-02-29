@@ -22,7 +22,8 @@ uses
   uLocalizaDescricao in 'view\pesquisa\uLocalizaDescricao.pas' {frmLocalizaDescricao},
   uCadProdutos in 'view\cadastros\uCadProdutos.pas' {frmCadProdutos},
   uLocalizaProduto in 'view\pesquisa\uLocalizaProduto.pas' {frmLocalizaProduto},
-  uCadClientes_Juridico in 'view\cadastros\uCadClientes_Juridico.pas' {frmCadClientes_Juridico};
+  uCadClientes_Juridico in 'view\cadastros\uCadClientes_Juridico.pas' {frmCadClientes_Juridico},
+  uLocalizarCliente in 'view\pesquisa\uLocalizarCliente.pas' {frmLocalizarCliente};
 
 {$R *.res}
 

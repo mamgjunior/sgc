@@ -33,6 +33,13 @@ type
     opcMarcas: TMenuItem;
     opcDescricao: TMenuItem;
     opcCatalogo: TMenuItem;
+    Clientes1: TMenuItem;
+    opcCadClienteJuridico: TMenuItem;
+    N1: TMenuItem;
+    btnSeparador: TToolButton;
+    btnClientes: TToolButton;
+    btnFornecedores: TToolButton;
+    btnProdutos: TToolButton;
     procedure FormShow(Sender: TObject);
     procedure tmrPrincipalTimer(Sender: TObject);
     procedure opcSairClick(Sender: TObject);
@@ -47,6 +54,7 @@ type
     procedure opcDescricaoClick(Sender: TObject);
     procedure opcCatalogoClick(Sender: TObject);
     procedure opcMarcasClick(Sender: TObject);
+    procedure opcCadClienteJuridicoClick(Sender: TObject);
   private
     procedure MostrarDicas(Sender: TObject);
   public
@@ -61,7 +69,7 @@ implementation
 {$R *.dfm}
 
 uses
-  uRotinasGenericas, uCadDepartametos, uCadCargos, uCadFuncionarios, uCadFornecedores, uCadGrupoas, uCadCategorias, uCadProdutos, uCadDescricao, uCadFamilia, uCadMarcas;
+  uRotinasGenericas, uCadDepartametos, uCadCargos, uCadFuncionarios, uCadFornecedores, uCadGrupoas, uCadCategorias, uCadProdutos, uCadDescricao, uCadFamilia, uCadMarcas, uCadClientes_Juridico;
 
 procedure TfrmPrincipal.btnSairClick(Sender: TObject);
 begin
@@ -79,6 +87,18 @@ begin
   end;
 //  clbFerramentas.Bitmap.LoadFromFile('FUNDOBARRA.BMP');
   stbPrincipal.Panels[0].Text := MostrarData;
+end;
+
+procedure TfrmPrincipal.opcCadClienteJuridicoClick(Sender: TObject);
+var
+  formulario: TfrmCadClientes_Juridico;
+begin
+  if (Application.FindComponent('frmCadClientes_Juridico') = nil) then
+  begin
+    formulario := TfrmCadClientes_Juridico.Create(Application);
+    formulario.Top := 0;
+    formulario.Left := 0;
+  end;
 end;
 
 procedure TfrmPrincipal.MostrarDicas(Sender: TObject);
