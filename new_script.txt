@@ -219,5 +219,5 @@ CREATE TABLE USUARIOS(
 );
 
 /*Criando usuário administrador do sistema*/
-INSERT INTO usuarios(codigo_usuario, codigo_funcionario, identificacao_usuario, senha_acesso, codigo_perfil) VALUES (1, '99999', 'admsis', '4divis1s', 1);
+INSERT INTO usuarios(codigo_usuario, codigo_funcionario, identificacao_usuario, senha_acesso, codigo_perfil) VALUES (1, '99999', 'ADMSIS', '4DIVIS1S', 1);
 

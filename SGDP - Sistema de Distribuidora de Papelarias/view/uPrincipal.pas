@@ -40,6 +40,7 @@ type
     btnClientes: TToolButton;
     btnFornecedores: TToolButton;
     btnProdutos: TToolButton;
+    imgDesabilitadas: TImageList;
     procedure FormShow(Sender: TObject);
     procedure tmrPrincipalTimer(Sender: TObject);
     procedure opcSairClick(Sender: TObject);
@@ -57,6 +58,10 @@ type
     procedure opcCadClienteJuridicoClick(Sender: TObject);
   private
     procedure MostrarDicas(Sender: TObject);
+    procedure Acesso;
+    procedure ConfiguraSistema(codigoUsuario: Integer);
+    procedure ConfiguracaoMenus;
+    procedure ConfiguracaoBotoes;
   public
     { Public declarations }
   end;
@@ -69,24 +74,89 @@ implementation
 {$R *.dfm}
 
 uses
-  uRotinasGenericas, uCadDepartametos, uCadCargos, uCadFuncionarios, uCadFornecedores, uCadGrupoas, uCadCategorias, uCadProdutos, uCadDescricao, uCadFamilia, uCadMarcas, uCadClientes_Juridico;
+  uRotinasGenericas, uCadDepartametos, uCadCargos, uCadFuncionarios, uCadFornecedores, uCadGrupoas, uCadCategorias, uCadProdutos, uCadDescricao, uCadFamilia, uCadMarcas, uCadClientes_Juridico, uAcessoSistema, uDMModulo1;
+
+procedure TfrmPrincipal.Acesso;
+var
+  intCodigoUsuario: Integer;
+  blnAcessoLiberado: Boolean;
+begin
+  Application.CreateForm(TfrmAcessoSistema, frmAcessoSistema);
+  frmAcessoSistema.ShowModal;
+
+  intCodigoUsuario := frmAcessoSistema.codigo_usuario;
+  blnAcessoLiberado := frmAcessoSistema.acesso_liberado;
+  frmAcessoSistema.Destroy;
+
+  if blnAcessoLiberado then
+  begin
+    with frmPrincipal do
+    begin
+      Top := 0;
+      Left := 0;
+      Width := Screen.Width;
+      Height := Screen.Height;
+    end;
+
+    stbPrincipal.Panels[0].Text := MostrarData;
+    Application.ShowMainForm := True;
+    ShowWindow(Application.Handle, SW_RESTORE);
+    ConfiguraSistema(intCodigoUsuario);
+  end
+  else
+    Application.Terminate;
+end;
 
 procedure TfrmPrincipal.btnSairClick(Sender: TObject);
 begin
   Application.Terminate;
 end;
 
+procedure TfrmPrincipal.ConfiguraSistema(codigoUsuario: Integer);
+begin
+  dmModuloDados1.sdsUsuarios.Open;
+  dmModuloDados1.sdsPerfilUsuario.Open;
+
+  dmModuloDados1.sdsUsuarios.IndexFieldNames := 'codigo_usuario';
+  dmModuloDados1.sdsPerfilUsuario.IndexFieldNames := 'codigo_perfil';
+
+  dmModuloDados1.sdsUsuarios.FindKey([codigoUsuario]);
+  dmModuloDados1.sdsPerfilUsuario.FindKey([dmModuloDados1.sdsUsuariosCODIGO_PERFIL.AsInteger]);
+
+  ConfiguracaoMenus;
+  ConfiguracaoBotoes;
+
+  dmModuloDados1.sdsUsuarios.IndexFieldNames := EmptyStr;
+  dmModuloDados1.sdsPerfilUsuario.IndexFieldNames := EmptyStr;
+
+  dmModuloDados1.sdsUsuarios.Close;
+  dmModuloDados1.sdsPerfilUsuario.Close;
+end;
+
+procedure TfrmPrincipal.ConfiguracaoMenus;
+const
+  SIM = 'S';
+begin
+  frmPrincipal.opcProdutos.Enabled := (dmModuloDados1.sdsPerfilUsuarioCADASTRO_PRODUTOS.AsString = SIM);
+  frmPrincipal.opcCadCargos.Enabled := (dmModuloDados1.sdsPerfilUsuarioCADASTRO_FUNCIONARIOS.AsString = SIM);
+  frmPrincipal.opcCadClienteJuridico.Enabled := (dmModuloDados1.sdsPerfilUsuarioCADASTRO_CLIENTES.AsString = SIM);
+  frmPrincipal.opcCadFuncionarios.Enabled := (dmModuloDados1.sdsPerfilUsuarioCADASTRO_FUNCIONARIOS.AsString = SIM);
+  frmPrincipal.opcCadFornecedores.Enabled := (dmModuloDados1.sdsPerfilUsuarioCADASTRO_FORNECEDORES.AsString = SIM);
+  frmPrincipal.opcCadDepartamentos.Enabled := (dmModuloDados1.sdsPerfilUsuarioCADASTRO_FUNCIONARIOS.AsString = SIM);
+end;
+
+procedure TfrmPrincipal.ConfiguracaoBotoes;
+const
+  SIM = 'S';
+begin
+  frmPrincipal.btnClientes.Enabled := (dmModuloDados1.sdsPerfilUsuarioCADASTRO_CLIENTES.AsString = SIM);
+  frmPrincipal.btnProdutos.Enabled := (dmModuloDados1.sdsPerfilUsuarioCADASTRO_PRODUTOS.AsString = SIM);
+  frmPrincipal.btnFornecedores.Enabled := (dmModuloDados1.sdsPerfilUsuarioCADASTRO_FORNECEDORES.AsString = SIM);
+end;
+
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  with frmPrincipal do
-  begin
-    Top := 0;
-    Left := 0;
-    Width := Screen.Width;
-    Height := Screen.Height;
-  end;
-//  clbFerramentas.Bitmap.LoadFromFile('FUNDOBARRA.BMP');
-  stbPrincipal.Panels[0].Text := MostrarData;
+  Acesso;
 end;
 
 procedure TfrmPrincipal.opcCadClienteJuridicoClick(Sender: TObject);
