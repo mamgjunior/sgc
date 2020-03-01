@@ -23,7 +23,8 @@ uses
   uCadProdutos in 'view\cadastros\uCadProdutos.pas' {frmCadProdutos},
   uLocalizaProduto in 'view\pesquisa\uLocalizaProduto.pas' {frmLocalizaProduto},
   uCadClientes_Juridico in 'view\cadastros\uCadClientes_Juridico.pas' {frmCadClientes_Juridico},
-  uLocalizarCliente in 'view\pesquisa\uLocalizarCliente.pas' {frmLocalizarCliente};
+  uLocalizarCliente in 'view\pesquisa\uLocalizarCliente.pas' {frmLocalizarCliente},
+  uAcessoSistema in 'view\uAcessoSistema.pas' {frmAcessoSistema};
 
 {$R *.res}
 
@@ -32,5 +33,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmModuloDados1, dmModuloDados1);
+  Application.CreateForm(TfrmAcessoSistema, frmAcessoSistema);
   Application.Run;
 end.

@@ -30,6 +30,8 @@ CREATE DOMAIN DMREGISTRO INTEGER;
 CREATE DOMAIN DMTELEFONE VARCHAR(16);
 CREATE DOMAIN DMVALOR DECIMAL (10,2);
 CREATE DOMAIN DMHOME_PAGE VARCHAR(30);
+CREATE DOMAIN DMCODIGO_PERFIL INTEGER;
+CREATE DOMAIN DMCODIGO_USUARIO INTEGER;
 
 /* Criando tabelas da base de dados */
 
@@ -185,6 +187,8 @@ CREATE TABLE CONTROLE_SEQUENCIA(
     codigo_fornecedor DMCODIGO_FORNECEDOR,
     codigo_grupo DMCODIGO_GRUPO,
     codigo_marca DMCODIGO_MARCA,
+	codigo_perfil DMCODIGO_PERFIL,
+    codigo_usuario DMCODIGO_USUARIO,
     CONSTRAINT pk_controle_sequencia PRIMARY KEY(registro)
 )
 
@@ -193,3 +197,27 @@ CREATE TABLE ESTADOS(
     estado VARCHAR(40),
     CONSTRAINT pk_estados PRIMARY KEY(sigla_estado)
 )
+
+CREATE TABLE PERFIL_USUARIO(
+    CODIGO_PERFIL DMCODIGO_PERFIL NOT NULL,
+    DESCRICAO_PERFIL VARCHAR(25),
+    CADASTRO_FORNECEDORES CHAR(1),
+    CADASTRO_PRODUTOS CHAR(1),
+    CADASTRO_CLIENTES CHAR(1),
+    CADASTRO_FUNCIONARIOS CHAR(1),
+    CADASTRO_USUARIOS CHAR(1),
+    CONSTRAINT PK_PERFIL_USUARIO PRIMARY KEY(CODIGO_PERFIL)
+);
+
+CREATE TABLE USUARIOS(
+    codigo_usuario DMCODIGO_USUARIO NOT NULL,
+    codigo_funcionario DMMATRICULA,
+    identificacao_usuario VARCHAR(15),
+    senha_acesso VARCHAR(8),
+    codigo_perfil DMCODIGO_PERFIL,
+    CONSTRAINT pk_USUARIOS PRIMARY KEY(codigo_usuario)
+);
+
+/*Criando usuário administrador do sistema*/
+INSERT INTO usuarios(codigo_usuario, codigo_funcionario, identificacao_usuario, senha_acesso, codigo_perfil) VALUES (1, '99999', 'admsis', '4divis1s', 1);
+

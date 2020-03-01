@@ -159,6 +159,24 @@ type
     sdsClientesLIMITE_CREDITO: TFMTBCDField;
     sdsClientesVALOR_ABERTO: TFMTBCDField;
     sdsClientesTIPO_COBRANCA: TStringField;
+    sdsPerfilUsuario: TSimpleDataSet;
+    dsPerfilUsuario: TDataSource;
+    sdsPerfilUsuarioCODIGO_PERFIL: TIntegerField;
+    sdsPerfilUsuarioDESCRICAO_PERFIL: TStringField;
+    sdsPerfilUsuarioCADASTRO_FORNECEDORES: TStringField;
+    sdsPerfilUsuarioCADASTRO_PRODUTOS: TStringField;
+    sdsPerfilUsuarioCADASTRO_CLIENTES: TStringField;
+    sdsPerfilUsuarioCADASTRO_FUNCIONARIOS: TStringField;
+    sdsPerfilUsuarioCADASTRO_USUARIOS: TStringField;
+    sdsUsuarios: TSimpleDataSet;
+    dsUsuarios: TDataSource;
+    sdsUsuariosCODIGO_USUARIO: TIntegerField;
+    sdsUsuariosCODIGO_FUNCIONARIO: TStringField;
+    sdsUsuariosIDENTIFICACAO_USUARIO: TStringField;
+    sdsUsuariosSENHA_ACESSO: TStringField;
+    sdsUsuariosCODIGO_PERFIL: TIntegerField;
+    sdsControleCODIGO_PERFIL: TIntegerField;
+    sdsControleCODIGO_USUARIO: TIntegerField;
     procedure sdsDepartamentosBeforeDelete(DataSet: TDataSet);
     procedure sdsFornecedoresBeforeDelete(DataSet: TDataSet);
     procedure sdsCargosBeforeDelete(DataSet: TDataSet);
@@ -170,6 +188,8 @@ type
     procedure sdsDescricaoBeforeDelete(DataSet: TDataSet);
     procedure sdsCatalogoBeforeDelete(DataSet: TDataSet);
     procedure sdsFornecedorProdutoBeforeDelete(DataSet: TDataSet);
+    procedure sdsPerfilUsuarioBeforeDelete(DataSet: TDataSet);
+    procedure sdsUsuariosBeforeDelete(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -249,6 +269,18 @@ begin
 end;
 
 procedure TdmModuloDados1.sdsMarcasBeforeDelete(DataSet: TDataSet);
+begin
+  if Confirmar('Deseja excluir esse registro?') <> IDYES then
+    Abort
+end;
+
+procedure TdmModuloDados1.sdsPerfilUsuarioBeforeDelete(DataSet: TDataSet);
+begin
+  if Confirmar('Deseja excluir esse registro?') <> IDYES then
+    Abort
+end;
+
+procedure TdmModuloDados1.sdsUsuariosBeforeDelete(DataSet: TDataSet);
 begin
   if Confirmar('Deseja excluir esse registro?') <> IDYES then
     Abort
