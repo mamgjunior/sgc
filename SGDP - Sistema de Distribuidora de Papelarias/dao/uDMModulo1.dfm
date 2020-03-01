@@ -181,6 +181,12 @@ object dmModuloDados1: TdmModuloDados1
     object sdsControleCODIGO_MARCA: TIntegerField
       FieldName = 'CODIGO_MARCA'
     end
+    object sdsControleCODIGO_PERFIL: TIntegerField
+      FieldName = 'CODIGO_PERFIL'
+    end
+    object sdsControleCODIGO_USUARIO: TIntegerField
+      FieldName = 'CODIGO_USUARIO'
+    end
   end
   object dsControle: TDataSource
     DataSet = sdsControle
@@ -1046,5 +1052,128 @@ object dmModuloDados1: TdmModuloDados1
     DataSet = sdsClientes
     Left = 232
     Top = 263
+  end
+  object sdsPerfilUsuario: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'PERFIL_USUARIO'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    BeforeDelete = sdsPerfilUsuarioBeforeDelete
+    Left = 304
+    Top = 264
+    object sdsPerfilUsuarioCODIGO_PERFIL: TIntegerField
+      FieldName = 'CODIGO_PERFIL'
+      Required = True
+    end
+    object sdsPerfilUsuarioDESCRICAO_PERFIL: TStringField
+      FieldName = 'DESCRICAO_PERFIL'
+      Size = 25
+    end
+    object sdsPerfilUsuarioCADASTRO_FORNECEDORES: TStringField
+      FieldName = 'CADASTRO_FORNECEDORES'
+      FixedChar = True
+      Size = 1
+    end
+    object sdsPerfilUsuarioCADASTRO_PRODUTOS: TStringField
+      FieldName = 'CADASTRO_PRODUTOS'
+      FixedChar = True
+      Size = 1
+    end
+    object sdsPerfilUsuarioCADASTRO_CLIENTES: TStringField
+      FieldName = 'CADASTRO_CLIENTES'
+      FixedChar = True
+      Size = 1
+    end
+    object sdsPerfilUsuarioCADASTRO_FUNCIONARIOS: TStringField
+      FieldName = 'CADASTRO_FUNCIONARIOS'
+      FixedChar = True
+      Size = 1
+    end
+    object sdsPerfilUsuarioCADASTRO_USUARIOS: TStringField
+      FieldName = 'CADASTRO_USUARIOS'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object dsPerfilUsuario: TDataSource
+    DataSet = sdsPerfilUsuario
+    Left = 383
+    Top = 264
+  end
+  object sdsUsuarios: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Connection.Connected = True
+    DataSet.CommandText = 'USUARIOS'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    BeforeDelete = sdsUsuariosBeforeDelete
+    Left = 456
+    Top = 264
+    object sdsUsuariosCODIGO_USUARIO: TIntegerField
+      FieldName = 'CODIGO_USUARIO'
+      Required = True
+    end
+    object sdsUsuariosCODIGO_FUNCIONARIO: TStringField
+      FieldName = 'CODIGO_FUNCIONARIO'
+      FixedChar = True
+      Size = 5
+    end
+    object sdsUsuariosIDENTIFICACAO_USUARIO: TStringField
+      FieldName = 'IDENTIFICACAO_USUARIO'
+      Size = 15
+    end
+    object sdsUsuariosSENHA_ACESSO: TStringField
+      FieldName = 'SENHA_ACESSO'
+      Size = 8
+    end
+    object sdsUsuariosCODIGO_PERFIL: TIntegerField
+      FieldName = 'CODIGO_PERFIL'
+    end
+  end
+  object dsUsuarios: TDataSource
+    DataSet = sdsUsuarios
+    Left = 520
+    Top = 264
   end
 end
