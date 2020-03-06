@@ -41,6 +41,8 @@ type
     btnFornecedores: TToolButton;
     btnProdutos: TToolButton;
     imgDesabilitadas: TImageList;
+    opcCadPerfilUsuario: TMenuItem;
+    opcCadUsuario: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure tmrPrincipalTimer(Sender: TObject);
     procedure opcSairClick(Sender: TObject);
@@ -56,6 +58,8 @@ type
     procedure opcCatalogoClick(Sender: TObject);
     procedure opcMarcasClick(Sender: TObject);
     procedure opcCadClienteJuridicoClick(Sender: TObject);
+    procedure opcCadPerfilUsuarioClick(Sender: TObject);
+    procedure opcCadUsuarioClick(Sender: TObject);
   private
     procedure MostrarDicas(Sender: TObject);
     procedure Acesso;
@@ -74,7 +78,7 @@ implementation
 {$R *.dfm}
 
 uses
-  uRotinasGenericas, uCadDepartametos, uCadCargos, uCadFuncionarios, uCadFornecedores, uCadGrupoas, uCadCategorias, uCadProdutos, uCadDescricao, uCadFamilia, uCadMarcas, uCadClientes_Juridico, uAcessoSistema, uDMModulo1;
+  uRotinasGenericas, uCadDepartametos, uCadCargos, uCadFuncionarios, uCadFornecedores, uCadGrupoas, uCadCategorias, uCadProdutos, uCadDescricao, uCadFamilia, uCadMarcas, uCadClientes_Juridico, uAcessoSistema, uDMModulo1, uCadPerfil, CadUsuarios;
 
 procedure TfrmPrincipal.Acesso;
 var
@@ -219,6 +223,30 @@ begin
   if (Application.FindComponent('frmCadFuncionarios') = nil) then
   begin
     formulario := TfrmCadFuncionarios.Create(Application);
+    formulario.Top := 0;
+    formulario.Left := 0;
+  end;
+end;
+
+procedure TfrmPrincipal.opcCadPerfilUsuarioClick(Sender: TObject);
+var
+  formulario: TfrmCadPerfil;
+begin
+  if (Application.FindComponent('TfrmCadPerfil') = nil) then
+  begin
+    formulario := TfrmCadPerfil.Create(Application);
+    formulario.Top := 0;
+    formulario.Left := 0;
+  end;
+end;
+
+procedure TfrmPrincipal.opcCadUsuarioClick(Sender: TObject);
+var
+  formulario: TfrmCadUsuarios;
+begin
+  if (Application.FindComponent('frmCadUsuarios') = nil) then
+  begin
+    formulario := TfrmCadUsuarios.Create(Application);
     formulario.Top := 0;
     formulario.Left := 0;
   end;

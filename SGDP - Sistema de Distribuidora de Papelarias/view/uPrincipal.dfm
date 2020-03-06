@@ -2481,8 +2481,8 @@ object frmPrincipal: TfrmPrincipal
         Width = 759
       end>
     object tlbFerramentas: TToolBar
-      Left = 3
-      Top = -3
+      Left = 11
+      Top = 0
       Width = 750
       Height = 38
       AutoSize = True
@@ -3698,6 +3698,14 @@ object frmPrincipal: TfrmPrincipal
           OnClick = opcCadClienteJuridicoClick
         end
       end
+      object opcCadPerfilUsuario: TMenuItem
+        Caption = 'Perfil de usu'#225'rios'
+        OnClick = opcCadPerfilUsuarioClick
+      end
+      object opcCadUsuario: TMenuItem
+        Caption = 'Usu'#225'rios'
+        OnClick = opcCadUsuarioClick
+      end
     end
   end
   object tmrPrincipal: TTimer
@@ -3711,7 +3719,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 240
     Top = 56
     Bitmap = {
-      494C010104001000040020002000FFFFFFFFFF00FFFFFFFFFFFFFFFF424D3600
+      494C010104001000040020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000004000000001002000000000000080
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4771,6 +4779,7 @@ object frmPrincipal: TfrmPrincipal
       F000000FF000000FF000000FF000000FF000000FF000000FF000000FF000000F
       F000000FF000000FF000000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000000000000000000000
+      000000000000}
   end
 end

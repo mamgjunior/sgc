@@ -25,7 +25,8 @@ uses
   uCadClientes_Juridico in 'view\cadastros\uCadClientes_Juridico.pas' {frmCadClientes_Juridico},
   uLocalizarCliente in 'view\pesquisa\uLocalizarCliente.pas' {frmLocalizarCliente},
   uAcessoSistema in 'view\uAcessoSistema.pas' {frmAcessoSistema},
-  uCadPerfil in 'view\cadastros\uCadPerfil.pas' {frmCadPerfil};
+  uCadPerfil in 'view\cadastros\uCadPerfil.pas' {frmCadPerfil},
+  CadUsuarios in 'view\cadastros\CadUsuarios.pas' {frmCadUsuarios};
 
 {$R *.res}
 
