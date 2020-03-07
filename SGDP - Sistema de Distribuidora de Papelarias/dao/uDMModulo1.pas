@@ -177,6 +177,21 @@ type
     sdsUsuariosCODIGO_PERFIL: TIntegerField;
     sdsControleCODIGO_PERFIL: TIntegerField;
     sdsControleCODIGO_USUARIO: TIntegerField;
+    sdsEntradaNF: TSimpleDataSet;
+    dsEntradaNF: TDataSource;
+    sdsEntradaNFREGISTRO: TIntegerField;
+    sdsEntradaNFCODIGO_FORNECEDOR: TIntegerField;
+    sdsEntradaNFNUMERO_NOTA_FISCAL: TStringField;
+    sdsEntradaNFCODIGO_PRODUTO: TIntegerField;
+    sdsEntradaNFDESCRICAO_PRODUTOS: TStringField;
+    sdsEntradaNFQUANTIDADE: TIntegerField;
+    sdsEntradaNFPRECO_UNITARIO: TFMTBCDField;
+    sdsEntradaNFVALOR_TOTAL: TFMTBCDField;
+    sdsControleREGISTRO_ITEM_PEDIDO: TIntegerField;
+    sdsControleNUMERO_PEDIDO: TIntegerField;
+    sdsControleREGISTRO_ENTRADA_NF: TIntegerField;
+    sdsPerfilUsuarioENTRADA_ESTOQUE: TStringField;
+    sdsPerfilUsuarioVENDAS: TStringField;
     procedure sdsDepartamentosBeforeDelete(DataSet: TDataSet);
     procedure sdsFornecedoresBeforeDelete(DataSet: TDataSet);
     procedure sdsCargosBeforeDelete(DataSet: TDataSet);
@@ -190,7 +205,9 @@ type
     procedure sdsFornecedorProdutoBeforeDelete(DataSet: TDataSet);
     procedure sdsPerfilUsuarioBeforeDelete(DataSet: TDataSet);
     procedure sdsUsuariosBeforeDelete(DataSet: TDataSet);
+    procedure sdsEntradaNFBeforeDelete(DataSet: TDataSet);
   private
+    procedure ConfirmarExclusao;
     { Private declarations }
   public
     { Public declarations }
@@ -210,80 +227,78 @@ uses
 
 procedure TdmModuloDados1.sdsCargosBeforeDelete(DataSet: TDataSet);
 begin
-  if Confirmar('Deseja excluir esse registro?') <> IDYES then
-    Abort
+  ConfirmarExclusao;
 end;
 
 procedure TdmModuloDados1.sdsCatalogoBeforeDelete(DataSet: TDataSet);
 begin
-  if Confirmar('Deseja excluir esse registro?') <> IDYES then
-    Abort
+  ConfirmarExclusao;
 end;
 
 procedure TdmModuloDados1.sdsCategoriasBeforeDelete(DataSet: TDataSet);
 begin
-  if Confirmar('Deseja excluir esse registro?') <> IDYES then
-    Abort
+  ConfirmarExclusao;
 end;
 
 procedure TdmModuloDados1.sdsDepartamentosBeforeDelete(DataSet: TDataSet);
 begin
-  if Confirmar('Deseja excluir esse registro?') <> IDYES then
-    Abort
+  ConfirmarExclusao;
 end;
 
 procedure TdmModuloDados1.sdsDescricaoBeforeDelete(DataSet: TDataSet);
 begin
+  ConfirmarExclusao;
+end;
+
+procedure TdmModuloDados1.sdsEntradaNFBeforeDelete(DataSet: TDataSet);
+begin
+  ConfirmarExclusao
+end;
+
+procedure TdmModuloDados1.ConfirmarExclusao;
+begin
   if Confirmar('Deseja excluir esse registro?') <> IDYES then
-    Abort
+    Abort;
 end;
 
 procedure TdmModuloDados1.sdsFamiliasBeforeDelete(DataSet: TDataSet);
 begin
-  if Confirmar('Deseja excluir esse registro?') <> IDYES then
-    Abort
+  ConfirmarExclusao;
 end;
 
 procedure TdmModuloDados1.sdsFornecedoresBeforeDelete(DataSet: TDataSet);
 begin
-  if Confirmar('Deseja excluir esse registro?') <> IDYES then
-    Abort
+  ConfirmarExclusao;
 end;
 
 procedure TdmModuloDados1.sdsFornecedorProdutoBeforeDelete(DataSet: TDataSet);
 begin
-  if Confirmar('Deseja excluir esse registro?') <> IDYES then
-    Abort
+  ConfirmarExclusao;
 end;
 
 procedure TdmModuloDados1.sdsFuncionariosBeforeDelete(DataSet: TDataSet);
 begin
-  if Confirmar('Deseja excluir esse registro?') <> IDYES then
-    Abort
+  ConfirmarExclusao;
 end;
 
 procedure TdmModuloDados1.sdsGruposBeforeDelete(DataSet: TDataSet);
 begin
-  if Confirmar('Deseja excluir esse registro?') <> IDYES then
-    Abort
+  ConfirmarExclusao;
 end;
 
 procedure TdmModuloDados1.sdsMarcasBeforeDelete(DataSet: TDataSet);
 begin
-  if Confirmar('Deseja excluir esse registro?') <> IDYES then
-    Abort
+  ConfirmarExclusao;
 end;
 
 procedure TdmModuloDados1.sdsPerfilUsuarioBeforeDelete(DataSet: TDataSet);
 begin
-  if Confirmar('Deseja excluir esse registro?') <> IDYES then
-    Abort
+  ConfirmarExclusao;
 end;
 
 procedure TdmModuloDados1.sdsUsuariosBeforeDelete(DataSet: TDataSet);
 begin
-  if Confirmar('Deseja excluir esse registro?') <> IDYES then
-    Abort
+  ConfirmarExclusao;
 end;
 
 end.

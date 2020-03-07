@@ -32,6 +32,7 @@ CREATE DOMAIN DMVALOR DECIMAL (10,2);
 CREATE DOMAIN DMHOME_PAGE VARCHAR(30);
 CREATE DOMAIN DMCODIGO_PERFIL INTEGER;
 CREATE DOMAIN DMCODIGO_USUARIO INTEGER;
+CREATE DOMAIN DMNUMERO_PEDIDO INTEGER;
 
 /* Criando tabelas da base de dados */
 
@@ -189,6 +190,9 @@ CREATE TABLE CONTROLE_SEQUENCIA(
     codigo_marca DMCODIGO_MARCA,
 	codigo_perfil DMCODIGO_PERFIL,
     codigo_usuario DMCODIGO_USUARIO,
+	registro_item_pedido INTEGER,
+	numero_pedido INTEGER,
+	registro_entrada_nf INTEGER,
     CONSTRAINT pk_controle_sequencia PRIMARY KEY(registro)
 )
 
@@ -206,6 +210,8 @@ CREATE TABLE PERFIL_USUARIO(
     CADASTRO_CLIENTES CHAR(1),
     CADASTRO_FUNCIONARIOS CHAR(1),
     CADASTRO_USUARIOS CHAR(1),
+	entrada_estoque CHAR(1),
+	vendas CHAR(1),
     CONSTRAINT PK_PERFIL_USUARIO PRIMARY KEY(CODIGO_PERFIL)
 );
 
@@ -217,6 +223,43 @@ CREATE TABLE USUARIOS(
     codigo_perfil DMCODIGO_PERFIL,
     CONSTRAINT pk_USUARIOS PRIMARY KEY(codigo_usuario)
 );
+
+CREATE TABLE CONTROLE_PEDIDOS(
+    numero_pedido DMNUMERO_PEDIDO NOT NULL,
+    data_pedido DATE,
+    codigo_cliente DMCODIGO_CLIENTE,
+    codigo_vendedor DMMATRICULA,
+    valor_total DECIMAL(12,2),
+    codicao_pagamento INTEGER,
+    forma_entrada VARCHAR(50),
+    CONSTRAINT pk_controle_pedidos PRIMARY KEY(numero_pedido)
+);
+
+CREATE TABLE ITENS_PEDIDO(
+    registro DMREGISTRO NOT NULL,
+    numero_pedido DMNUMERO_PEDIDO,
+    numero_item INTEGER,
+    codigo_interno DMCODIGO_INTERNO,
+    descricao_produto VARCHAR(80),
+    preco_unitario DECIMAL(8,2),
+    quantidade INTEGER,
+    preco_total DECIMAL(10,2),
+    CONSTRAINT pk_itens_pedido PRIMARY KEY(registro)
+
+);
+
+CREATE TABLE ENTRADA_NF(
+    registro DMREGISTRO NOT NULL,
+    codigo_fornecedor DMCODIGO_FORNECEDOR,
+    numero_nota_fiscal CHAR(6),
+    codigo_produto DMCODIGO_INTERNO,
+    descricao_produtos VARCHAR(80),
+    quantidade INTEGER,
+    preco_unitario DECIMAL(8,2),
+    valor_total DECIMAL(10,2),
+    CONSTRAINT pk_entrada_nf PRIMARY KEY(registro)
+);
+
 
 /*Criando usuário administrador do sistema*/
 INSERT INTO usuarios(codigo_usuario, codigo_funcionario, identificacao_usuario, senha_acesso, codigo_perfil) VALUES (1, '99999', 'ADMSIS', '4DIVIS1S', 1);

@@ -1,6 +1,6 @@
 object dmModuloDados1: TdmModuloDados1
   OldCreateOrder = False
-  Height = 349
+  Height = 485
   Width = 631
   object sdsFornecedores: TSimpleDataSet
     Aggregates = <>
@@ -186,6 +186,15 @@ object dmModuloDados1: TdmModuloDados1
     end
     object sdsControleCODIGO_USUARIO: TIntegerField
       FieldName = 'CODIGO_USUARIO'
+    end
+    object sdsControleREGISTRO_ITEM_PEDIDO: TIntegerField
+      FieldName = 'REGISTRO_ITEM_PEDIDO'
+    end
+    object sdsControleNUMERO_PEDIDO: TIntegerField
+      FieldName = 'NUMERO_PEDIDO'
+    end
+    object sdsControleREGISTRO_ENTRADA_NF: TIntegerField
+      FieldName = 'REGISTRO_ENTRADA_NF'
     end
   end
   object dsControle: TDataSource
@@ -1115,6 +1124,16 @@ object dmModuloDados1: TdmModuloDados1
       FixedChar = True
       Size = 1
     end
+    object sdsPerfilUsuarioENTRADA_ESTOQUE: TStringField
+      FieldName = 'ENTRADA_ESTOQUE'
+      FixedChar = True
+      Size = 1
+    end
+    object sdsPerfilUsuarioVENDAS: TStringField
+      FieldName = 'VENDAS'
+      FixedChar = True
+      Size = 1
+    end
   end
   object dsPerfilUsuario: TDataSource
     DataSet = sdsPerfilUsuario
@@ -1175,5 +1194,81 @@ object dmModuloDados1: TdmModuloDados1
     DataSet = sdsUsuarios
     Left = 520
     Top = 264
+  end
+  object sdsEntradaNF: TSimpleDataSet
+    Aggregates = <>
+    Connection.ConnectionName = 'FBConnection'
+    Connection.DriverName = 'Firebird'
+    Connection.LoginPrompt = False
+    Connection.Params.Strings = (
+      'DriverName=Firebird'
+      'Database=C:\workspace\Projeto_SGC\sgc\db_sgc.fdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    DataSet.CommandText = 'ENTRADA_NF'
+    DataSet.CommandType = ctTable
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    BeforeDelete = sdsEntradaNFBeforeDelete
+    Left = 40
+    Top = 344
+    object sdsEntradaNFREGISTRO: TIntegerField
+      FieldName = 'REGISTRO'
+      Required = True
+    end
+    object sdsEntradaNFCODIGO_FORNECEDOR: TIntegerField
+      DisplayLabel = 'Fornecedor'
+      FieldName = 'CODIGO_FORNECEDOR'
+    end
+    object sdsEntradaNFNUMERO_NOTA_FISCAL: TStringField
+      DisplayLabel = 'Nota Fiscal'
+      FieldName = 'NUMERO_NOTA_FISCAL'
+      FixedChar = True
+      Size = 6
+    end
+    object sdsEntradaNFCODIGO_PRODUTO: TIntegerField
+      DisplayLabel = 'C'#243'digo do Produto'
+      FieldName = 'CODIGO_PRODUTO'
+    end
+    object sdsEntradaNFDESCRICAO_PRODUTOS: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'DESCRICAO_PRODUTOS'
+      Size = 80
+    end
+    object sdsEntradaNFQUANTIDADE: TIntegerField
+      DisplayLabel = 'Quantidade'
+      FieldName = 'QUANTIDADE'
+      DisplayFormat = '####0'
+    end
+    object sdsEntradaNFPRECO_UNITARIO: TFMTBCDField
+      DisplayLabel = 'Pre'#231'o Unit'#225'rio'
+      FieldName = 'PRECO_UNITARIO'
+      DisplayFormat = '##,##0.00'
+      Precision = 9
+      Size = 2
+    end
+    object sdsEntradaNFVALOR_TOTAL: TFMTBCDField
+      DisplayLabel = 'Valor Total'
+      FieldName = 'VALOR_TOTAL'
+      DisplayFormat = '##,##0.00'
+      Precision = 18
+      Size = 2
+    end
+  end
+  object dsEntradaNF: TDataSource
+    DataSet = sdsEntradaNF
+    Left = 40
+    Top = 400
   end
 end
