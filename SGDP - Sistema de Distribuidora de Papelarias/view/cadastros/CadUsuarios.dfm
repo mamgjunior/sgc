@@ -24,8 +24,8 @@ inherited frmCadUsuarios: TfrmCadUsuarios
   end
   inherited pgDados: TPageControl
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 5
-      ExplicitTop = 28
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 670
       ExplicitHeight = 395
       object lblFuncionario: TLabel
@@ -71,9 +71,10 @@ inherited frmCadUsuarios: TfrmCadUsuarios
       end
       object edtUsuario: TDBEdit
         Left = 30
-        Top = 101
+        Top = 100
         Width = 280
         Height = 21
+        CharCase = ecUpperCase
         DataField = 'IDENTIFICACAO_USUARIO'
         DataSource = dmModuloDados1.dsUsuarios
         TabOrder = 1
@@ -85,6 +86,7 @@ inherited frmCadUsuarios: TfrmCadUsuarios
         Top = 100
         Width = 280
         Height = 21
+        CharCase = ecUpperCase
         DataField = 'SENHA_ACESSO'
         DataSource = dmModuloDados1.dsUsuarios
         TabOrder = 2

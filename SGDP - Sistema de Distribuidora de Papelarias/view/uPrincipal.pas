@@ -43,6 +43,7 @@ type
     imgDesabilitadas: TImageList;
     opcCadPerfilUsuario: TMenuItem;
     opcCadUsuario: TMenuItem;
+    opcMudarUsuario: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure tmrPrincipalTimer(Sender: TObject);
     procedure opcSairClick(Sender: TObject);
@@ -60,6 +61,7 @@ type
     procedure opcCadClienteJuridicoClick(Sender: TObject);
     procedure opcCadPerfilUsuarioClick(Sender: TObject);
     procedure opcCadUsuarioClick(Sender: TObject);
+    procedure opcMudarUsuarioClick(Sender: TObject);
   private
     procedure MostrarDicas(Sender: TObject);
     procedure Acesso;
@@ -322,6 +324,35 @@ begin
     formulario.Top := 0;
     formulario.Left := 0;
   end;
+end;
+
+procedure TfrmPrincipal.opcMudarUsuarioClick(Sender: TObject);
+var
+  usuario: Integer;
+  sairSistema: Boolean;
+  acessoLiberado: Boolean;
+begin
+  sairSistema := False;
+  acessoLiberado := False;
+  Application.CreateForm(TfrmAcessoSistema, frmAcessoSistema);
+  while not acessoLiberado do
+  begin
+    if frmAcessoSistema.ShowModal = mrOk then
+    begin
+      usuario := frmAcessoSistema.codigo_usuario;
+      acessoLiberado := frmAcessoSistema.acesso_liberado;
+      if acessoLiberado then
+        ConfiguraSistema(usuario)
+      else
+      begin
+        sairSistema := False;
+        acessoLiberado := True;
+      end;
+    end;
+  end;
+  frmAcessoSistema.Destroy;
+  if sairSistema then
+    Application.Terminate;
 end;
 
 procedure TfrmPrincipal.opcSairClick(Sender: TObject);

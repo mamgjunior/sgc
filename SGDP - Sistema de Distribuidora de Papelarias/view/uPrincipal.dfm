@@ -3637,6 +3637,10 @@ object frmPrincipal: TfrmPrincipal
     Top = 57
     object opcArquivo: TMenuItem
       Caption = '&Arquivo'
+      object opcMudarUsuario: TMenuItem
+        Caption = 'Mudar Usu'#225'rio'
+        OnClick = opcMudarUsuarioClick
+      end
       object opcSair: TMenuItem
         Caption = '&Sair'
         ShortCut = 16467
