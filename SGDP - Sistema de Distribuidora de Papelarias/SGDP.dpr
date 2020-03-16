@@ -26,7 +26,8 @@ uses
   uLocalizarCliente in 'view\pesquisa\uLocalizarCliente.pas' {frmLocalizarCliente},
   uAcessoSistema in 'view\uAcessoSistema.pas' {frmAcessoSistema},
   uCadPerfil in 'view\cadastros\uCadPerfil.pas' {frmCadPerfil},
-  CadUsuarios in 'view\cadastros\CadUsuarios.pas' {frmCadUsuarios};
+  CadUsuarios in 'view\cadastros\CadUsuarios.pas' {frmCadUsuarios},
+  uEntradaNF in 'view\movimentacoes\uEntradaNF.pas' {frmEntradaNF};
 
 {$R *.res}
 
@@ -36,5 +37,6 @@ begin
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmModuloDados1, dmModuloDados1);
   Application.CreateForm(TfrmAcessoSistema, frmAcessoSistema);
+  Application.CreateForm(TfrmEntradaNF, frmEntradaNF);
   Application.Run;
 end.
