@@ -38,7 +38,7 @@ object frmMestreCadastro: TfrmMestreCadastro
         Control = tlbCadastro
         ImageIndex = -1
         MinHeight = 39
-        Width = 693
+        Width = 688
       end>
     object tlbCadastro: TToolBar
       Left = 11
@@ -98,6 +98,7 @@ object frmMestreCadastro: TfrmMestreCadastro
         Top = 0
         Caption = 'Editar'
         ImageIndex = 6
+        OnClick = btnEditarClick
       end
       object btnDesfazer: TToolButton
         Left = 273
@@ -138,10 +139,6 @@ object frmMestreCadastro: TfrmMestreCadastro
     TabOrder = 2
     object TabSheet1: TTabSheet
       Caption = 'Dados Principais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
   end
   object imgHabilitadas: TImageList

@@ -44,6 +44,8 @@ type
     opcCadPerfilUsuario: TMenuItem;
     opcCadUsuario: TMenuItem;
     opcMudarUsuario: TMenuItem;
+    mnuMovientos: TMenuItem;
+    opcEntradaEstoque: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure tmrPrincipalTimer(Sender: TObject);
     procedure opcSairClick(Sender: TObject);
@@ -62,6 +64,7 @@ type
     procedure opcCadPerfilUsuarioClick(Sender: TObject);
     procedure opcCadUsuarioClick(Sender: TObject);
     procedure opcMudarUsuarioClick(Sender: TObject);
+    procedure opcEntradaEstoqueClick(Sender: TObject);
   private
     procedure MostrarDicas(Sender: TObject);
     procedure Acesso;
@@ -80,7 +83,7 @@ implementation
 {$R *.dfm}
 
 uses
-  uRotinasGenericas, uCadDepartametos, uCadCargos, uCadFuncionarios, uCadFornecedores, uCadGrupoas, uCadCategorias, uCadProdutos, uCadDescricao, uCadFamilia, uCadMarcas, uCadClientes_Juridico, uAcessoSistema, uDMModulo1, uCadPerfil, CadUsuarios;
+  uRotinasGenericas, uCadDepartametos, uCadCargos, uCadFuncionarios, uCadFornecedores, uCadGrupoas, uCadCategorias, uCadProdutos, uCadDescricao, uCadFamilia, uCadMarcas, uCadClientes_Juridico, uAcessoSistema, uDMModulo1, uCadPerfil, CadUsuarios, uEntradaNF;
 
 procedure TfrmPrincipal.Acesso;
 var
@@ -149,6 +152,7 @@ begin
   frmPrincipal.opcCadFuncionarios.Enabled := (dmModuloDados1.sdsPerfilUsuarioCADASTRO_FUNCIONARIOS.AsString = SIM);
   frmPrincipal.opcCadFornecedores.Enabled := (dmModuloDados1.sdsPerfilUsuarioCADASTRO_FORNECEDORES.AsString = SIM);
   frmPrincipal.opcCadDepartamentos.Enabled := (dmModuloDados1.sdsPerfilUsuarioCADASTRO_FUNCIONARIOS.AsString = SIM);
+  frmPrincipal.opcEntradaEstoque.Enabled := (dmModuloDados1.sdsPerfilUsuarioENTRADA_ESTOQUE.AsString = SIM);
 end;
 
 procedure TfrmPrincipal.ConfiguracaoBotoes;
@@ -285,6 +289,18 @@ begin
   if (Application.FindComponent('frmCadDescricao') = nil) then
   begin
     formulario := TfrmCadDescricao.Create(Application);
+    formulario.Top := 0;
+    formulario.Left := 0;
+  end;
+end;
+
+procedure TfrmPrincipal.opcEntradaEstoqueClick(Sender: TObject);
+var
+  formulario: TfrmEntradaNF;
+begin
+  if (Application.FindComponent('frmEntradaNF') = nil) then
+  begin
+    formulario := TfrmEntradaNF.Create(Application);
     formulario.Top := 0;
     formulario.Left := 0;
   end;

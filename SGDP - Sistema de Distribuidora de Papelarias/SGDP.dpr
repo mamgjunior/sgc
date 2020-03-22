@@ -37,6 +37,5 @@ begin
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmModuloDados1, dmModuloDados1);
   Application.CreateForm(TfrmAcessoSistema, frmAcessoSistema);
-  Application.CreateForm(TfrmEntradaNF, frmEntradaNF);
   Application.Run;
 end.

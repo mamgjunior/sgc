@@ -3711,6 +3711,13 @@ object frmPrincipal: TfrmPrincipal
         OnClick = opcCadUsuarioClick
       end
     end
+    object mnuMovientos: TMenuItem
+      Caption = 'Movimentos'
+      object opcEntradaEstoque: TMenuItem
+        Caption = 'Entrada de Estoque'
+        OnClick = opcEntradaEstoqueClick
+      end
+    end
   end
   object tmrPrincipal: TTimer
     OnTimer = tmrPrincipalTimer

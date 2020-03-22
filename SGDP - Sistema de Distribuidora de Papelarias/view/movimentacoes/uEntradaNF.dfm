@@ -335,7 +335,6 @@ object frmEntradaNF: TfrmEntradaNF
       Align = alTop
       BevelInner = bvLowered
       TabOrder = 0
-      ExplicitLeft = 3
       object btnIncluirItem: TSpeedButton
         Left = 1
         Top = 3
@@ -633,6 +632,8 @@ object frmEntradaNF: TfrmEntradaNF
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      OnDblClick = grdItensNFDblClick
+      OnKeyDown = grdItensNFKeyDown
       Columns = <
         item
           Expanded = False
@@ -731,5 +732,6 @@ object frmEntradaNF: TfrmEntradaNF
       FFFFFFFFFFFFFFFFFFFFFFFFFF0443963D6DAE5F87BC83A2CBA9BFDBCBD8EAED
       F2F8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     TabOrder = 2
+    OnClick = btnSairClick
   end
 end

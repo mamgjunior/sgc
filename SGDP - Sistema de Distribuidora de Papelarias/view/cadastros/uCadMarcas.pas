@@ -46,28 +46,27 @@ uses
 procedure TfrmCadMarcas.btnAdicionarClick(Sender: TObject);
 begin
   inherited;
-    if Sender = btnAdicionar then
-    begin
-      try
-        dmModuloDados1.sdsMarcas.Append;
-        chrModo := 'I';
-      except
-        MsgStatus(EmptyStr);
-        Mensagem('Impossível adicionar um novo registro!');
-      end;
-    end
-    else if Sender = btnEditar then
-    begin
-      try
-        dmModuloDados1.sdsMarcas.Edit;
-        chrModo := 'A';
-      except
-        MsgStatus(EmptyStr);
-        Mensagem('Impossível entrar no modo de edição!');
-      end;
+  if Sender = btnAdicionar then
+  begin
+    try
+      dmModuloDados1.sdsMarcas.Append;
+      chrModo := 'I';
+    except
+      MsgStatus(EmptyStr);
+      Mensagem('Impossível adicionar um novo registro!');
     end;
-
-    MoveFoco;
+  end
+  else if Sender = btnEditar then
+  begin
+    try
+      dmModuloDados1.sdsMarcas.Edit;
+      chrModo := 'A';
+    except
+      MsgStatus(EmptyStr);
+      Mensagem('Impossível entrar no modo de edição!');
+    end;
+  end;
+  MoveFoco;
 end;
 
 procedure TfrmCadMarcas.btnAnteriorClick(Sender: TObject);

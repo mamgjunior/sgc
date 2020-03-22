@@ -19,6 +19,8 @@ type
     chkCADASTRO_FUNCIONARIOS: TDBCheckBox;
     chkCADASTRO_CLIENTES: TDBCheckBox;
     chkCADASTRO_USUARIOS: TDBCheckBox;
+    tsMovimentos: TTabSheet;
+    fldEntradaEstoque: TDBCheckBox;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnAdicionarClick(Sender: TObject);
@@ -105,6 +107,7 @@ begin
       dmModuloDados1.sdsPerfilUsuarioCADASTRO_CLIENTES.AsString := 'N';
       dmModuloDados1.sdsPerfilUsuarioCADASTRO_FUNCIONARIOS.AsString := 'N';
       dmModuloDados1.sdsPerfilUsuarioCADASTRO_USUARIOS.AsString := 'N';
+      dmModuloDados1.sdsPerfilUsuarioENTRADA_ESTOQUE.AsString := 'N';
       chrModo := 'I';
     except
       MsgStatus(EmptyStr);

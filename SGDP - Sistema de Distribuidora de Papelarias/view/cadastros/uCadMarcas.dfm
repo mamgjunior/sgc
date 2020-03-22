@@ -3,13 +3,6 @@ inherited frmCadMarcas: TfrmCadMarcas
   PixelsPerInch = 96
   TextHeight = 13
   inherited clbCadastro: TCoolBar
-    Bands = <
-      item
-        Control = tlbCadastro
-        ImageIndex = -1
-        MinHeight = 39
-        Width = 688
-      end>
     inherited tlbCadastro: TToolBar
       inherited btnAnterior: TToolButton
         OnClick = btnAnteriorClick
@@ -21,10 +14,6 @@ inherited frmCadMarcas: TfrmCadMarcas
   end
   inherited pgDados: TPageControl
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 670
-      ExplicitHeight = 395
       object lblMarca: TLabel
         Left = 6
         Top = 16
@@ -33,7 +22,7 @@ inherited frmCadMarcas: TfrmCadMarcas
         Caption = 'Descri'#231#227'o da Marca: '
       end
       object edtMarcas: TDBEdit
-        Left = 110
+        Left = 112
         Top = 13
         Width = 387
         Height = 21
@@ -46,10 +35,6 @@ inherited frmCadMarcas: TfrmCadMarcas
     object tsListaRegistro: TTabSheet
       Caption = 'tsListaRegistro'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object grdDados: TDBGrid
         Left = 16
         Top = 24

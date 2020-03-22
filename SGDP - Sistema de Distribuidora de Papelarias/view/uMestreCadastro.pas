@@ -44,7 +44,9 @@ type
     procedure btnSairClick(Sender: TObject);
     procedure btnLocalizarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnEditarClick(Sender: TObject);
   private
+    procedure Adicionar_Editar(Sender: TObject);
     { Private declarations }
   public
     chrModo: string;
@@ -97,15 +99,7 @@ end;
 
 procedure TfrmMestreCadastro.btnAdicionarClick(Sender: TObject);
 begin
-  if Sender = btnAdicionar then
-    MsgStatus('Adição de um nvo registro')
-  else if Sender = btnEditar then
-    MsgStatus('Edição de dados do registro corrente...');
-
-  ConfiguraBotoes(Sender, False);
-  BloquearCampos(False);
-  btnGravar.Enabled := True;
-  pgDados.ActivePageIndex := 0;
+  Adicionar_Editar(Sender);
 end;
 
 procedure TfrmMestreCadastro.btnDesfazerClick(Sender: TObject);
@@ -120,6 +114,11 @@ begin
   btnExcluir.Enabled := True;
   btnGravar.Enabled := False;
   pgDados.ActivePageIndex := 0;
+end;
+
+procedure TfrmMestreCadastro.btnEditarClick(Sender: TObject);
+begin
+  Adicionar_Editar(Sender);
 end;
 
 procedure TfrmMestreCadastro.btnExcluirClick(Sender: TObject);
@@ -248,6 +247,18 @@ end;
 procedure TfrmMestreCadastro.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
+end;
+
+procedure TfrmMestreCadastro.Adicionar_Editar(Sender: TObject);
+begin
+  if Sender = btnAdicionar then
+    MsgStatus('Adição de um nvo registro')
+  else if Sender = btnEditar then
+    MsgStatus('Edição de dados do registro corrente...');
+  ConfiguraBotoes(Sender, False);
+  BloquearCampos(False);
+  btnGravar.Enabled := True;
+  pgDados.ActivePageIndex := 0;
 end;
 
 procedure TfrmMestreCadastro.FormKeyPress(Sender: TObject; var Key: Char);

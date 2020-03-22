@@ -48,6 +48,10 @@ type
     procedure btnAlterarItemClick(Sender: TObject);
     procedure btnExcluirItemClick(Sender: TObject);
     procedure btnGravarItemClick(Sender: TObject);
+    procedure grdItensNFDblClick(Sender: TObject);
+    procedure grdItensNFKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure btnSairClick(Sender: TObject);
   private
     procedure LimparNotaFical;
     procedure LimparProduto;
@@ -187,6 +191,11 @@ end;
 procedure TfrmEntradaNF.btnProdutoClick(Sender: TObject);
 begin
   produto;
+end;
+
+procedure TfrmEntradaNF.btnSairClick(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TfrmEntradaNF.ConfiguracaoFinal(var Action: TCloseAction);
@@ -348,6 +357,33 @@ begin
   grpItensNF.Enabled := False;
   grpDadosNF.Enabled := True;
   mskNumeroNF.SetFocus;
+end;
+
+procedure TfrmEntradaNF.grdItensNFDblClick(Sender: TObject);
+var
+  codigoProduto: Integer;
+  codigoDescricao: Integer;
+begin
+  codigoProduto := dmModuloDados1.sdsEntradaNFCODIGO_PRODUTO.AsInteger;
+  dmModuloDados1.sdsCatalogo.IndexFieldNames := 'codigo_interno';
+  dmModuloDados1.sdsCatalogo.FindKey([codigoProduto]);
+  codigoDescricao := dmModuloDados1.sdsCatalogoCODIGO_DESCRICAO.AsInteger;
+  dmModuloDados1.sdsDescricao.IndexFieldNames := 'codigo_descricao';
+  dmModuloDados1.sdsDescricao.FindKey([codigoDescricao]);
+
+  dmModuloDados1.sdsCatalogo.IndexFieldNames := EmptyStr;
+  dmModuloDados1.sdsDescricao.IndexFieldNames := EmptyStr;
+
+  fldProduto.Caption := dmModuloDados1.sdsEntradaNFDESCRICAO_PRODUTOS.AsString;
+  mskQuantidade.Text := dmModuloDados1.sdsEntradaNFQUANTIDADE.AsString;
+  edtPreocoUnitario.Text := Format('%8.2f', [dmModuloDados1.sdsEntradaNFPRECO_UNITARIO.AsFloat]);
+  fldValorTotal.Caption := Format('%10.2f', [dmModuloDados1.sdsEntradaNFVALOR_TOTAL.AsFloat]);
+end;
+
+procedure TfrmEntradaNF.grdItensNFKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  if (Shift = [ssCtrl]) and (Key = VK_DELETE) then
+    Key := 0;
 end;
 
 end.

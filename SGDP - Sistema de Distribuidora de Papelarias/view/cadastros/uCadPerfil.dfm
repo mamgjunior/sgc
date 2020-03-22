@@ -3,13 +3,6 @@ inherited frmCadPerfil: TfrmCadPerfil
   PixelsPerInch = 96
   TextHeight = 13
   inherited clbCadastro: TCoolBar
-    Bands = <
-      item
-        Control = tlbCadastro
-        ImageIndex = -1
-        MinHeight = 39
-        Width = 688
-      end>
     inherited tlbCadastro: TToolBar
       inherited btnAnterior: TToolButton
         OnClick = btnAnteriorClick
@@ -24,10 +17,6 @@ inherited frmCadPerfil: TfrmCadPerfil
   end
   inherited pgDados: TPageControl
     inherited TabSheet1: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 670
-      ExplicitHeight = 395
       object lblIdPerfil: TLabel
         Left = 14
         Top = 20
@@ -54,10 +43,9 @@ inherited frmCadPerfil: TfrmCadPerfil
         TabOrder = 1
         object tsCadastro: TTabSheet
           Caption = 'Cadastros'
-          ExplicitLeft = 0
           object chkCADASTRO_FORNECEDORES: TDBCheckBox
             Left = 22
-            Top = 24
+            Top = 29
             Width = 97
             Height = 17
             Caption = 'Fornecedores'
@@ -142,6 +130,28 @@ inherited frmCadPerfil: TfrmCadPerfil
             Font.Style = [fsBold]
             ParentFont = False
             TabOrder = 4
+            ValueChecked = 'S'
+            ValueUnchecked = 'N'
+          end
+        end
+        object tsMovimentos: TTabSheet
+          Caption = 'Movimentos'
+          ImageIndex = 1
+          object fldEntradaEstoque: TDBCheckBox
+            Left = 22
+            Top = 29
+            Width = 150
+            Height = 17
+            Caption = 'Entrada de Notas Fiscais'
+            DataField = 'ENTRADA_ESTOQUE'
+            DataSource = dmModuloDados1.dsPerfilUsuario
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 0
             ValueChecked = 'S'
             ValueUnchecked = 'N'
           end
